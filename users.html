@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Пользователи — Руководство 9 Инь</title>
   <link rel="icon" type="image/png" href="images/favicon.png">
-  <link rel="stylesheet" href="styles.css?v=20261004-2146">
+  <link rel="stylesheet" href="styles.css?v=20261004-2230">
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script defer src="supabase-config.js"></script>
   <script defer src="auth.js?v=20261004-2146"></script>
@@ -142,14 +142,12 @@
           const name = esc(user.username || 'Пользователь');
           const server = esc(serverLabels[user.server] || 'Сервер не выбран');
           const avatar = esc(avatarUrl(user.avatar_path));
-          const badge = user.is_admin ? '<span class="user-admin-badge-v1">АДМИН</span>' : '';
           return `
             <article class="user-card-v1">
               <img class="user-card-avatar-v1" src="${avatar}" alt="">
               <div class="user-card-copy-v1">
                 <div class="user-card-name-row-v1">
                   <strong>${name}</strong>
-                  ${badge}
                 </div>
                 <span>${server}</span>
               </div>
