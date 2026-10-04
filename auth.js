@@ -33,7 +33,7 @@
 
   async function getProfile(userId) {
     const { data, error } = await client.from('profiles')
-      .select('id, username, server, avatar_path, created_at, updated_at')
+      .select('id, username, server, avatar_path, about_me, created_at, updated_at')
       .eq('id', userId)
       .single();
     if (error) throw error;
@@ -447,6 +447,14 @@
       const { error } = await client.from('profiles').update({ avatar_path: null }).eq('id', session.user.id);
       if (error) throw error;
       return DEFAULT_AVATAR;
+    },
+    async saveAboutMe(value) {
+      const session = await getSession();
+      if (!session?.user) throw new Error('Требуется вход в аккаунт.');
+      const about = String(value || '').trim().slice(0, 800);
+      const { error } = await client.from('profiles').update({ about_me: about || null }).eq('id', session.user.id);
+      if (error) throw error;
+      return about;
     }
   };
 
