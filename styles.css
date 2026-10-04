@@ -6549,3 +6549,94 @@ body.profile-page-v1 #profile-server-save-v2:disabled{opacity:.55;cursor:default
   }
   body.profile-page-v1 .profile-heading-v2{text-align:center}
 }
+
+
+/* Profile sizing refinement v5 */
+body.profile-page-v1 .profile-shell-v1{
+  width:min(1080px,calc(100% - 34px));
+  margin:28px auto 42px;
+}
+body.profile-page-v1 .profile-card-v2{
+  padding:24px;
+}
+body.profile-page-v1 .profile-card-v1::before{
+  inset:11px;
+}
+body.profile-page-v1 .profile-layout-v2{
+  grid-template-columns:230px minmax(0,1fr);
+  gap:22px;
+}
+body.profile-page-v1 .profile-left-v2{
+  gap:14px;
+}
+body.profile-page-v1 .profile-heading-v2 h1{
+  font-size:clamp(2rem,3vw,2.8rem);
+}
+body.profile-page-v1 .profile-avatar-wrap-v1 img{
+  width:138px;
+  height:138px;
+}
+body.profile-page-v1 .profile-avatar-button-v1,
+body.profile-page-v1 .profile-avatar-reset-v1{
+  min-height:34px;
+  padding:7px 12px;
+  font-size:.76rem;
+}
+body.profile-page-v1 .profile-right-v2{
+  gap:12px;
+}
+body.profile-page-v1 .profile-info-grid-v2{
+  gap:10px;
+}
+body.profile-page-v1 .profile-info-grid-v2 .profile-field-v1{
+  min-height:0;
+  height:auto;
+  padding:12px 14px;
+}
+body.profile-page-v1 .profile-field-v1 span{
+  margin-bottom:5px;
+}
+body.profile-page-v1 .profile-field-v1 strong{
+  line-height:1.25;
+}
+body.profile-page-v1 .profile-server-row-v2{
+  margin-top:2px;
+}
+body.profile-page-v1 .profile-about-v2{
+  padding:12px 14px;
+}
+body.profile-page-v1 .profile-about-head-v2{
+  margin-bottom:8px;
+}
+body.profile-page-v1 #profile-about-v2{
+  min-height:120px;
+  max-height:220px;
+  padding:10px 12px;
+}
+body.profile-page-v1 .profile-about-actions-v2{
+  margin-top:8px;
+}
+body.profile-page-v1 .profile-actions-v1{
+  margin-top:0;
+}
+@media(max-width:860px){
+  body.profile-page-v1 .profile-layout-v2{
+    grid-template-columns:1fr;
+  }
+  body.profile-page-v1 .profile-left-v2{
+    grid-template-columns:170px minmax(0,1fr);
+    align-items:center;
+  }
+}
+@media(max-width:620px){
+  body.profile-page-v1 .profile-shell-v1{
+    width:min(100% - 18px,1080px);
+    margin-top:18px;
+  }
+  body.profile-page-v1 .profile-card-v2{
+    padding:18px 14px;
+  }
+  body.profile-page-v1 .profile-left-v2{
+    grid-template-columns:1fr;
+  }
+}
