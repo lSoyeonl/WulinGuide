@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Личный кабинет — Руководство 9 Инь</title>
   <link rel="icon" type="image/png" href="images/favicon.png">
-  <link rel="stylesheet" href="styles.css?v=20261004-2120">
+  <link rel="stylesheet" href="styles.css?v=20261004-2125">
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script defer src="supabase-config.js"></script>
-  <script defer src="auth.js?v=20261004-2120"></script>
+  <script defer src="auth.js?v=20261004-2125"></script>
 </head>
 <body class="wuxia-site-v5 wuxia-site-v44 wuxia-site-v45 profile-page-v1">
   <div class="mist-layer-v26" aria-hidden="true"></div>
@@ -105,7 +105,6 @@
         const profile = await auth.getProfile(session.user.id);
         const username = profile.username || 'Профиль';
         document.getElementById('profile-login-title-v1').textContent = username;
-        document.getElementById('profile-login-v1').textContent = username;
         document.getElementById('profile-email-v1').textContent = session.user.email || '—';
         serverSelect.value = profile.server || 'taiwan';
         avatar.src = auth.getAvatarUrl(profile);
