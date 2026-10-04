@@ -7175,3 +7175,30 @@ label, nav, table, th, td,
 .users-page-v1{
   font-family:"Golos Text", Arial, sans-serif !important;
 }
+
+
+/* Content protection for non-admin visitors */
+html.content-protected-v1,
+html.content-protected-v1 body,
+body.content-protected-v1{
+  -webkit-user-select:none !important;
+  user-select:none !important;
+  -webkit-touch-callout:none !important;
+}
+html.content-protected-v1 img,
+body.content-protected-v1 img{
+  -webkit-user-drag:none !important;
+  user-drag:none !important;
+}
+html.content-protected-v1 input,
+html.content-protected-v1 textarea,
+html.content-protected-v1 select,
+html.content-protected-v1 [contenteditable="true"]{
+  -webkit-user-select:text !important;
+  user-select:text !important;
+}
+@media print{
+  html.content-protected-v1 body{
+    display:none !important;
+  }
+}
