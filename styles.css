@@ -7096,3 +7096,20 @@ body.profile-page-v1 #profile-about-v2{
     white-space:normal;
   }
 }
+
+
+/* Gold top-up notice: all content left aligned */
+.gold-topup-copy-v1{
+  display:block !important;
+  text-align:left !important;
+}
+.gold-topup-copy-v1 small,
+.gold-topup-copy-v1 strong,
+.gold-topup-copy-v1 span{
+  display:block !important;
+  text-align:left !important;
+}
+.gold-topup-copy-v1 span{
+  margin-top:4px !important;
+  white-space:normal !important;
+}
