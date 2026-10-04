@@ -10,7 +10,6 @@
   };
   const PRIVATE_PAGES = ['beginners.html', 'taiwan.html', 'pirate.html', 'game-content.html', 'profile.html'];
   let pendingSignupEmail = '';
-  const arrivedFromEmailConfirmation = /(?:^|[#&])access_token=/.test(location.hash) || /(?:^|[#&])type=signup(?:&|$)/.test(location.hash);
   const page = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
   const isPublicPage = page === 'index.html' || page === '';
   const cfg = window.WULINGUIDE_SUPABASE;
@@ -76,17 +75,14 @@
           <p class="auth-message-v1" aria-live="polite"></p>
           <button class="auth-submit-v1" type="submit">Создать аккаунт</button>
         </form>
-        <div class="auth-form-v1 auth-status-v1" data-auth-form="sent" hidden>
-          <p class="auth-status-title-v1">Письмо отправлено</p>
-          <p class="auth-status-text-v1">Мы отправили письмо для подтверждения на <strong data-pending-email></strong>.</p>
-          <p class="auth-status-text-v1">Откройте письмо и нажмите кнопку «Подтвердить почту».</p>
-          <button class="auth-submit-v1" type="button" data-auth-close>Закрыть</button>
-        </div>
-        <div class="auth-form-v1 auth-status-v1" data-auth-form="confirmed" hidden>
-          <p class="auth-status-title-v1">Аккаунт создан</p>
-          <p class="auth-status-text-v1">Электронная почта успешно подтверждена.</p>
-          <button class="auth-submit-v1" type="button" data-auth-close>Продолжить</button>
-        </div>
+        <form class="auth-form-v1" data-auth-form="verify" hidden autocomplete="one-time-code">
+          <label>Код из письма
+            <input name="token" type="text" inputmode="numeric" autocomplete="one-time-code" required minlength="6" maxlength="6" pattern="[0-9]{6}" placeholder="000000">
+          </label>
+          <p class="auth-message-v1" aria-live="polite"></p>
+          <button class="auth-submit-v1" type="submit">Подтвердить почту</button>
+          <button class="auth-resend-v1" type="button">Отправить код повторно</button>
+        </form>
       </div>`;
     document.body.appendChild(modal);
 
@@ -99,33 +95,24 @@
     const setTab = (name) => {
       tabs.forEach(btn => btn.classList.toggle('is-active', btn.dataset.authTab === name));
       forms.forEach(form => form.hidden = form.dataset.authForm !== name);
-      const isStatus = name === 'sent' || name === 'confirmed';
-      modal.querySelector('.auth-tabs-v1').hidden = isStatus;
-      title.textContent = name === 'register' ? 'Регистрация'
-        : name === 'sent' ? 'Подтверждение почты'
-        : name === 'confirmed' ? 'Аккаунт создан'
-        : 'Вход';
+      modal.querySelector('.auth-tabs-v1').hidden = name === 'verify';
+      title.textContent = name === 'register' ? 'Регистрация' : (name === 'verify' ? 'Подтверждение почты' : 'Вход');
       lead.textContent = name === 'register'
-        ? 'Создайте аккаунт. После регистрации мы отправим письмо для подтверждения почты.'
-        : name === 'sent'
-          ? 'Остался один шаг — подтвердить адрес электронной почты.'
-          : name === 'confirmed'
-            ? 'Регистрация успешно завершена.'
-            : 'Войдите, чтобы открыть разделы руководства.';
-      const emailNode = modal.querySelector('[data-pending-email]');
-      if (emailNode) emailNode.textContent = pendingSignupEmail || '';
+        ? 'Создайте аккаунт. После этого на почту придёт шестизначный код.'
+        : (name === 'verify'
+          ? `Введите шестизначный код, отправленный на ${pendingSignupEmail || 'вашу почту'}.`
+          : 'Войдите, чтобы открыть разделы руководства.');
       forms.find(form => form.dataset.authForm === name)?.querySelector('input')?.focus();
     };
 
     const setBusy = (form, busy) => {
       const button = form.querySelector('button[type="submit"]');
       button.disabled = busy;
-      button.textContent = busy ? 'Подождите…' : (form.dataset.authForm === 'register' ? 'Создать аккаунт' : 'Войти');
+      button.textContent = busy ? 'Подождите…' : (form.dataset.authForm === 'register' ? 'Создать аккаунт' : (form.dataset.authForm === 'verify' ? 'Подтвердить почту' : 'Войти'));
     };
 
     tabs.forEach(btn => btn.addEventListener('click', () => setTab(btn.dataset.authTab)));
     close.addEventListener('click', () => { modal.hidden = true; });
-    modal.querySelectorAll('[data-auth-close]').forEach(btn => btn.addEventListener('click', () => { modal.hidden = true; }));
     modal.addEventListener('click', (e) => { if (e.target === modal) modal.hidden = true; });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modal.hidden) modal.hidden = true; });
 
@@ -154,7 +141,9 @@
         if (!signup.session) {
           pendingSignupEmail = email;
           form.reset();
-          setTab('sent');
+          setTab('verify');
+          const verifyMessage = modal.querySelector('[data-auth-form="verify"] .auth-message-v1');
+          if (verifyMessage) verifyMessage.textContent = 'Код подтверждения отправлен на почту.';
           return;
         }
         modal.hidden = true;
@@ -169,6 +158,71 @@
         setBusy(form, false);
       }
     });
+        if (error) throw error;
+        message.textContent = 'Новый код отправлен.';
+      } catch (err) {
+        message.textContent = String(err?.message || 'Не удалось отправить код повторно.');
+      } finally {
+        button.disabled = false;
+      }
+    });
+
+
+    modal.querySelector('[data-auth-form="verify"]').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.currentTarget;
+      const token = String(new FormData(form).get('token') || '').trim();
+      const message = form.querySelector('.auth-message-v1');
+      message.textContent = '';
+
+      if (!pendingSignupEmail) {
+        message.textContent = 'Сначала зарегистрируйте аккаунт.';
+        return;
+      }
+
+      setBusy(form, true);
+      try {
+        const { data, error } = await client.auth.verifyOtp({
+          email: pendingSignupEmail,
+          token,
+          type: 'email'
+        });
+        if (error) throw error;
+
+        const user = data?.user || data?.session?.user || (await getSession())?.user;
+        if (!user) throw new Error('Не удалось создать сессию после подтверждения.');
+
+        pendingSignupEmail = '';
+        form.reset();
+        modal.hidden = true;
+        await ensureServerSelected(user, true);
+        await continueAfterAuth();
+      } catch (err) {
+        message.textContent = /token has expired|otp.*expired/i.test(String(err?.message || ''))
+          ? 'Код истёк. Запросите новый.'
+          : 'Неверный или недействительный код.';
+      } finally {
+        setBusy(form, false);
+      }
+    });
+
+    modal.querySelector('.auth-resend-v1').addEventListener('click', async (e) => {
+      const button = e.currentTarget;
+      const form = modal.querySelector('[data-auth-form="verify"]');
+      const message = form.querySelector('.auth-message-v1');
+
+      if (!pendingSignupEmail) {
+        message.textContent = 'Сначала зарегистрируйте аккаунт.';
+        return;
+      }
+
+      button.disabled = true;
+      message.textContent = 'Отправляем новый код…';
+      try {
+        const { error } = await client.auth.resend({
+          type: 'signup',
+          email: pendingSignupEmail
+        });
         if (error) throw error;
         message.textContent = 'Новый код отправлен.';
       } catch (err) {
@@ -411,11 +465,7 @@
     await refreshAccountLinks();
     await protectCurrentPage();
     const params = new URLSearchParams(location.search);
-    const session = await getSession().catch(() => null);
-    if (arrivedFromEmailConfirmation && session?.user) {
-      window.WulinGuideAuth.open('confirmed');
-      await ensureServerSelected(session.user, false);
-    } else if (isPublicPage && params.get('auth') === 'required' && !session?.user) {
+    const session = await getSession().catch(() => null);    if (isPublicPage && params.get('auth') === 'required' && !session?.user) {
       window.WulinGuideAuth.open('login');
     }
   });
