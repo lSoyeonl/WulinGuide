@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Личный кабинет — Руководство 9 Инь</title>
   <link rel="icon" type="image/png" href="images/favicon.png">
-  <link rel="stylesheet" href="styles.css?v=20261004-2125">
+  <link rel="stylesheet" href="styles.css?v=20261004-2134">
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script defer src="supabase-config.js"></script>
   <script defer src="auth.js?v=20261004-2125"></script>
@@ -32,10 +32,7 @@
     <section class="profile-card-v1 profile-card-v2">
       <div class="profile-layout-v2">
         <aside class="profile-left-v2">
-          <div class="profile-heading-v1 profile-heading-v2">
-            <p class="tag">ЛИЧНЫЙ КАБИНЕТ</p>
-            <h1 id="profile-login-title-v1">Профиль</h1>
-          </div>
+          <div class="profile-section-title-v6">ЛИЧНЫЙ КАБИНЕТ</div>
 
           <div class="profile-avatar-wrap-v1">
             <img id="profile-avatar-v1" src="images/default-profile.webp" alt="Аватар пользователя">
@@ -47,6 +44,7 @@
 
         <div class="profile-right-v2">
           <div class="profile-info-grid-v1 profile-info-grid-v2">
+            <div class="profile-field-v1 profile-field-wide-v2"><span>Имя пользователя</span><strong id="profile-login-v1">—</strong></div>
             <div class="profile-field-v1 profile-field-wide-v2"><span>Электронная почта</span><strong id="profile-email-v1">—</strong></div>
             <div class="profile-field-v1 profile-server-edit-v2">
               <span>Сервер</span>
@@ -104,7 +102,7 @@
         if (!session?.user) return;
         const profile = await auth.getProfile(session.user.id);
         const username = profile.username || 'Профиль';
-        document.getElementById('profile-login-title-v1').textContent = username;
+        document.getElementById('profile-login-v1').textContent = username;
         document.getElementById('profile-email-v1').textContent = session.user.email || '—';
         serverSelect.value = profile.server || 'taiwan';
         avatar.src = auth.getAvatarUrl(profile);
