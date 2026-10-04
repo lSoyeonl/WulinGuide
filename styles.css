@@ -7113,3 +7113,48 @@ body.profile-page-v1 #profile-about-v2{
   margin-top:4px !important;
   white-space:normal !important;
 }
+
+
+/* Profile select arrow + action buttons v7 */
+body.profile-page-v1 #profile-server-select-v2{
+  appearance:none;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  padding-right:42px !important;
+  background-color:#04161d !important;
+  background-image:
+    linear-gradient(45deg,transparent 50%,#c8ad69 50%),
+    linear-gradient(135deg,#c8ad69 50%,transparent 50%) !important;
+  background-position:
+    calc(100% - 18px) 50%,
+    calc(100% - 12px) 50% !important;
+  background-size:6px 6px,6px 6px !important;
+  background-repeat:no-repeat !important;
+}
+body.profile-page-v1 #profile-server-select-v2::-ms-expand{
+  display:none;
+}
+body.profile-page-v1 .profile-actions-v1{
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+body.profile-page-v1 .profile-home-button-v1{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:34px;
+  padding:8px 13px;
+  border:1px solid rgba(216,173,86,.28);
+  background:rgba(216,173,86,.05);
+  color:#d9bd78;
+  text-decoration:none;
+  font:600 .76rem Georgia,"Times New Roman",serif;
+}
+body.profile-page-v1 .profile-home-button-v1:hover{
+  border-color:rgba(216,173,86,.52);
+  color:#f1d590;
+  background:rgba(216,173,86,.09);
+}
