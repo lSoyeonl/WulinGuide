@@ -337,20 +337,63 @@
 
   async function refreshAccountLinks() {
     const session = await getSession().catch(() => null);
+    let profile = null;
+
+    if (session?.user) {
+      try {
+        profile = await getProfile(session.user.id);
+      } catch (err) {
+        console.warn('Не удалось загрузить профиль для шапки:', err);
+      }
+    }
+
     document.querySelectorAll('[data-account-link]').forEach((el) => {
+      const nav = el.closest('nav');
+
       if (session?.user) {
-        el.textContent = 'Личный кабинет';
+        const username = profile?.username || session.user.email?.split('@')[0] || 'Пользователь';
+        const avatarUrl = getAvatarUrl(profile);
+
+        el.classList.add('header-user-v1');
+        el.innerHTML = `
+          <img class="header-user-avatar-v1" src="${avatarUrl}" alt="">
+          <span class="header-user-name-v1"></span>
+        `;
+        const name = el.querySelector('.header-user-name-v1');
+        if (name) name.textContent = username;
+
         el.setAttribute('href', 'profile.html');
         el.removeAttribute('data-open-auth');
+        el.setAttribute('aria-label', `Личный кабинет: ${username}`);
+
+        if (nav && !nav.querySelector('[data-signout]')) {
+          const logout = document.createElement('a');
+          logout.href = '#';
+          logout.className = 'header-logout-v1';
+          logout.dataset.signout = 'true';
+          logout.textContent = 'Выйти';
+          nav.appendChild(logout);
+        }
       } else {
+        el.classList.remove('header-user-v1');
         el.textContent = 'Войти';
         el.setAttribute('href', '#');
         el.setAttribute('data-open-auth', 'login');
+        el.removeAttribute('aria-label');
+        if (nav) nav.querySelectorAll('[data-signout]').forEach((node) => node.remove());
       }
     });
   }
 
-  document.addEventListener('click', (e) => {
+  document.addEventListener('click', async (e) => {
+    const signout = e.target.closest('[data-signout]');
+    if (signout) {
+      e.preventDefault();
+      await client.auth.signOut();
+      location.href = 'index.html';
+      return;
+    }
+
     const opener = e.target.closest('[data-open-auth]');
     if (!opener) return;
     e.preventDefault();
