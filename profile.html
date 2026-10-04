@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Личный кабинет — Руководство 9 Инь</title>
   <link rel="icon" type="image/png" href="images/favicon.png">
-  <link rel="stylesheet" href="styles.css?v=20261004-2112">
+  <link rel="stylesheet" href="styles.css?v=20261004-2120">
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script defer src="supabase-config.js"></script>
-  <script defer src="auth.js?v=20261004-2112"></script>
+  <script defer src="auth.js?v=20261004-2120"></script>
 </head>
 <body class="wuxia-site-v5 wuxia-site-v44 wuxia-site-v45 profile-page-v1">
   <div class="mist-layer-v26" aria-hidden="true"></div>
@@ -32,25 +32,34 @@
     <section class="profile-card-v1 profile-card-v2">
       <div class="profile-layout-v2">
         <aside class="profile-left-v2">
+          <div class="profile-heading-v1 profile-heading-v2">
+            <p class="tag">ЛИЧНЫЙ КАБИНЕТ</p>
+            <h1 id="profile-login-title-v1">Профиль</h1>
+          </div>
+
           <div class="profile-avatar-wrap-v1">
             <img id="profile-avatar-v1" src="images/default-profile.webp" alt="Аватар пользователя">
             <label class="profile-avatar-button-v1" for="profile-avatar-input-v1">Изменить аватар</label>
             <input id="profile-avatar-input-v1" type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden>
             <button id="profile-avatar-reset-v1" class="profile-avatar-reset-v1" type="button">Вернуть стандартный</button>
           </div>
-
-          <div class="profile-heading-v1 profile-heading-v2">
-            <p class="tag">ЛИЧНЫЙ КАБИНЕТ</p>
-            <h1 id="profile-login-title-v1">Профиль</h1>
-            <p>Личная информация владельца аккаунта.</p>
-          </div>
         </aside>
 
         <div class="profile-right-v2">
           <div class="profile-info-grid-v1 profile-info-grid-v2">
-            <div class="profile-field-v1"><span>Логин</span><strong id="profile-login-v1">—</strong></div>
-            <div class="profile-field-v1"><span>Сервер</span><strong id="profile-server-v1">—</strong></div>
             <div class="profile-field-v1 profile-field-wide-v2"><span>Электронная почта</span><strong id="profile-email-v1">—</strong></div>
+            <div class="profile-field-v1 profile-server-edit-v2">
+              <span>Сервер</span>
+              <div class="profile-server-row-v2">
+                <select id="profile-server-select-v2" aria-label="Сервер">
+                  <option value="taiwan">Тайвань</option>
+                  <option value="pirate_china">Пиратка Китай</option>
+                  <option value="private_dubu">Приват Дубу</option>
+                  <option value="china">Китай</option>
+                </select>
+                <button id="profile-server-save-v2" type="button">Сохранить</button>
+              </div>
+            </div>
           </div>
 
           <div class="profile-about-v2">
@@ -85,6 +94,8 @@
       const about = document.getElementById('profile-about-v2');
       const aboutCount = document.getElementById('profile-about-count-v2');
       const aboutSave = document.getElementById('profile-about-save-v2');
+      const serverSelect = document.getElementById('profile-server-select-v2');
+      const serverSave = document.getElementById('profile-server-save-v2');
       const updateAboutCount = () => {
         aboutCount.textContent = `${about.value.length} / 800`;
       };
@@ -96,7 +107,7 @@
         document.getElementById('profile-login-title-v1').textContent = username;
         document.getElementById('profile-login-v1').textContent = username;
         document.getElementById('profile-email-v1').textContent = session.user.email || '—';
-        document.getElementById('profile-server-v1').textContent = auth.serverLabels[profile.server] || 'Не выбран';
+        serverSelect.value = profile.server || 'taiwan';
         avatar.src = auth.getAvatarUrl(profile);
         about.value = profile.about_me || '';
         updateAboutCount();
@@ -123,6 +134,20 @@
           message.textContent = 'Стандартный аватар восстановлен.';
         } catch (err) {
           message.textContent = String(err?.message || 'Не удалось восстановить аватар.');
+        }
+      });
+      serverSave.addEventListener('click', async () => {
+        serverSave.disabled = true;
+        serverSave.textContent = 'Сохраняем…';
+        message.textContent = '';
+        try {
+          await auth.saveServer(serverSelect.value);
+          message.textContent = 'Сервер сохранён.';
+        } catch (err) {
+          message.textContent = String(err?.message || 'Не удалось сохранить сервер.');
+        } finally {
+          serverSave.disabled = false;
+          serverSave.textContent = 'Сохранить';
         }
       });
       about.addEventListener('input', updateAboutCount);
