@@ -2,6 +2,7 @@
   'use strict';
 
   const DEFAULT_AVATAR = 'images/default-profile.webp';
+  const ADMIN_EMAIL = 'lsoyeonl@yandex.ru';
   const SERVER_LABELS = {
     taiwan: 'Тайвань',
     pirate_china: 'Пиратка Китай',
@@ -326,6 +327,53 @@
     return true;
   }
 
+
+  function isAdminSession(session) {
+    return String(session?.user?.email || '').toLowerCase() === ADMIN_EMAIL;
+  }
+
+  function setContentProtection(enabled) {
+    document.documentElement.classList.toggle('content-protected-v1', enabled);
+    document.body?.classList.toggle('content-protected-v1', enabled);
+
+    if (window.__wulinProtectionBound) return;
+    window.__wulinProtectionBound = true;
+
+    const blockedEvent = (e) => {
+      if (!document.documentElement.classList.contains('content-protected-v1')) return;
+      const target = e.target;
+      if (target && target.closest && target.closest('input, textarea, select, [contenteditable="true"]')) return;
+      e.preventDefault();
+    };
+
+    ['copy', 'cut', 'contextmenu', 'dragstart', 'selectstart'].forEach(type => {
+      document.addEventListener(type, blockedEvent, { capture: true });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!document.documentElement.classList.contains('content-protected-v1')) return;
+      const target = e.target;
+      if (target && target.closest && target.closest('input, textarea, select, [contenteditable="true"]')) return;
+
+      const key = String(e.key || '').toLowerCase();
+      const ctrl = e.ctrlKey || e.metaKey;
+      const blocked =
+        key === 'f12' ||
+        (ctrl && ['c', 'x', 's', 'p', 'u'].includes(key)) ||
+        (ctrl && e.shiftKey && ['i', 'j', 'c'].includes(key));
+
+      if (blocked) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    }, { capture: true });
+  }
+
+  async function refreshContentProtection() {
+    const session = await getSession().catch(() => null);
+    setContentProtection(!isAdminSession(session));
+  }
+
   async function continueAfterAuth() {
     const params = new URLSearchParams(location.search);
     const returnPage = safeReturnPage(params.get('return'));
@@ -470,6 +518,7 @@
     buildAuthModal();
     buildServerModal();
     await refreshAccountLinks();
+    await refreshContentProtection();
     await protectCurrentPage();
     const params = new URLSearchParams(location.search);
     const session = await getSession().catch(() => null);    if (isPublicPage && params.get('auth') === 'required' && !session?.user) {
@@ -478,6 +527,9 @@
   });
 
   client.auth.onAuthStateChange(() => {
-    setTimeout(() => refreshAccountLinks(), 0);
+    setTimeout(() => {
+      refreshAccountLinks();
+      refreshContentProtection();
+    }, 0);
   });
 })();
