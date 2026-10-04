@@ -6961,3 +6961,23 @@ body.profile-page-v1 #profile-about-v2{
     height:40px;
   }
 }
+
+
+/* Utility cards full-width content, no icons */
+.utility-card{
+  grid-template-columns:minmax(0,1fr) auto !important;
+  gap:12px !important;
+}
+.utility-symbol{
+  display:none !important;
+}
+.gold-topup-notice-v1{
+  grid-template-columns:minmax(0,1fr) !important;
+  gap:0 !important;
+}
+.gold-topup-icon-v1{
+  display:none !important;
+}
+.gold-topup-copy-v1{
+  width:100%;
+}
