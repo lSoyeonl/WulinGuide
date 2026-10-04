@@ -5986,3 +5986,49 @@ body.wuxia-site-v34{
 @media(max-width:1080px){.wuxia-site-v72 .school-meridian-grid,.wuxia-site-v72 .sect-meridian-grid,.wuxia-site-v72 .jianghu-meridian-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:860px){.wuxia-site-v72 .meridians-catalog-hero-v72,.wuxia-site-v72 .meridian-entry-featured{grid-template-columns:1fr}.wuxia-site-v72 .meridians-catalog-orb-v72{justify-self:start}}
 @media(max-width:680px){.wuxia-site-v72 .meridian-catalog-shell-v72{width:min(100% - 20px,1180px);margin-top:22px}.wuxia-site-v72 .meridians-catalog-hero-v72{padding:26px 20px}.wuxia-site-v72 .meridian-category-nav,.wuxia-site-v72 .school-meridian-grid,.wuxia-site-v72 .sect-meridian-grid,.wuxia-site-v72 .jianghu-meridian-grid,.wuxia-site-v72 .meridian-stats-grid{grid-template-columns:1fr}.wuxia-site-v72 .meridian-entry-head{grid-template-columns:1fr}.wuxia-site-v72 .meridians-bottom-v72{align-items:flex-start;flex-direction:column}}
+
+
+
+/* WulinGuide account UI v1 */
+.auth-modal-v1[hidden]{display:none!important}
+.auth-modal-v1{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:20px;background:rgba(0,7,10,.82);backdrop-filter:blur(8px)}
+.auth-dialog-v1{position:relative;width:min(480px,100%);padding:30px;border:1px solid rgba(216,173,86,.28);background:linear-gradient(145deg,rgba(7,28,36,.99),rgba(3,17,23,.995));box-shadow:0 30px 90px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.015)}
+.auth-dialog-v1::before{content:"";position:absolute;inset:11px;border:1px solid rgba(216,173,86,.08);pointer-events:none}
+.auth-close-v1{position:absolute;right:13px;top:9px;width:36px;height:36px;border:0;background:transparent;color:#a8b9ba;font-size:1.8rem;cursor:pointer}
+.auth-dialog-v1 h2{margin:8px 0 7px;color:#f0ddaa;font:500 2rem/1.05 Georgia,"Times New Roman",serif}
+.auth-lead-v1{margin:0 0 18px;color:#97abad;line-height:1.5}
+.auth-tabs-v1{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:18px 0}
+.auth-tabs-v1 button{padding:11px 12px;border:1px solid rgba(216,173,86,.16);background:rgba(4,20,27,.72);color:#95a9aa;cursor:pointer;font:600 .9rem Georgia,"Times New Roman",serif}
+.auth-tabs-v1 button.is-active{border-color:rgba(216,173,86,.46);color:#f0cf82;background:rgba(216,173,86,.07)}
+.auth-form-v1{display:grid;gap:13px}
+.auth-form-v1[hidden]{display:none!important}
+.auth-form-v1 label{display:grid;gap:7px;color:#c9d3d4;font-size:.9rem}
+.auth-form-v1 input,.auth-form-v1 select{width:100%;padding:12px 13px;border:1px solid rgba(126,169,177,.22);outline:none;background:#04161d;color:#e8eeee;font:inherit}
+.auth-form-v1 input:focus,.auth-form-v1 select:focus{border-color:rgba(216,173,86,.55);box-shadow:0 0 0 2px rgba(216,173,86,.07)}
+.auth-submit-v1{margin-top:3px;padding:12px 16px;border:1px solid rgba(216,173,86,.44);background:rgba(216,173,86,.08);color:#f0cf82;font-weight:700;cursor:pointer}
+.auth-message-v1{min-height:1.2em;margin:0;color:#e89b8c;font-size:.86rem}
+.profile-shell-v1{width:min(980px,calc(100% - 40px));margin:38px auto 64px}
+.profile-card-v1{position:relative;padding:34px;border:1px solid rgba(216,173,86,.24);background:linear-gradient(145deg,rgba(7,28,36,.96),rgba(3,17,23,.98));box-shadow:0 24px 64px rgba(0,0,0,.28)}
+.profile-card-v1::before{content:"";position:absolute;inset:14px;border:1px solid rgba(216,173,86,.08);pointer-events:none}
+.profile-card-head-v1{position:relative;z-index:1;display:grid;grid-template-columns:190px minmax(0,1fr);gap:28px;align-items:center}
+.profile-avatar-wrap-v1{display:grid;justify-items:center;gap:10px}
+.profile-avatar-wrap-v1 img{width:154px;height:154px;border-radius:50%;object-fit:cover;border:2px solid rgba(216,173,86,.52);box-shadow:0 0 0 7px rgba(216,173,86,.04),0 14px 34px rgba(0,0,0,.3)}
+.profile-avatar-button-v1,.profile-avatar-reset-v1{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:9px 13px;border:1px solid rgba(216,173,86,.22);background:rgba(216,173,86,.05);color:#e2c276;font:600 .82rem Georgia,"Times New Roman",serif;cursor:pointer}
+.profile-avatar-reset-v1{border-color:rgba(126,169,177,.16);background:rgba(4,22,29,.7);color:#8fa7a9}
+.profile-heading-v1 h1{margin:9px 0 10px;color:#f0ddaa;font:500 clamp(2.6rem,6vw,4.5rem)/.95 Georgia,"Times New Roman",serif}
+.profile-heading-v1>p:last-child{margin:0;color:#95aaac}
+.profile-info-grid-v1{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin-top:30px}
+.profile-field-v1{min-height:112px;padding:17px;border:1px solid rgba(216,173,86,.14);background:rgba(4,22,29,.68)}
+.profile-field-v1 span{display:block;margin-bottom:12px;color:#718e92;font-size:.76rem;letter-spacing:.08em;text-transform:uppercase}
+.profile-field-v1 strong{display:block;color:#e6d8b4;font-size:1.08rem;overflow-wrap:anywhere}
+.profile-actions-v1{position:relative;z-index:1;margin-top:20px;display:flex;justify-content:flex-end}
+.profile-actions-v1 button{padding:11px 17px;border:1px solid rgba(179,95,82,.32);background:rgba(145,55,44,.07);color:#d6a49c;cursor:pointer}
+@media(max-width:720px){
+  .profile-shell-v1{width:min(100% - 22px,980px);margin-top:24px}
+  .profile-card-v1{padding:27px 20px}
+  .profile-card-head-v1{grid-template-columns:1fr;text-align:center}
+  .profile-info-grid-v1{grid-template-columns:1fr}
+  .profile-actions-v1{justify-content:stretch}
+  .profile-actions-v1 button{width:100%}
+}
+
