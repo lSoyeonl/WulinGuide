@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Пользователи — Руководство 9 Инь</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="stylesheet" href="styles.css?v=20261004-2146">
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="supabase-config.js"></script>
+  <script defer src="auth.js?v=20261004-2146"></script>
+</head>
+<body class="wuxia-site-v5 wuxia-site-v44 wuxia-site-v45 users-page-v1">
+  <div class="mist-layer-v26" aria-hidden="true"></div>
+  <div class="ash-layer-v26" aria-hidden="true"></div>
+  <div class="ember-layer-v26" aria-hidden="true"></div>
+
+  <header class="header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="Руководство 9 Инь">
+        <span class="round-brand-icon v40-brand-image" aria-hidden="true"><img src="images/brand-scroll-icon.png" alt=""></span>
+        <span class="brand-copy"><strong>Руководство 9 Инь</strong><small>БАЗА ЗНАНИЙ</small></span>
+      </a>
+      <nav>
+        <a href="index.html">Главная</a>
+        <a href="taiwan.html">Тайвань</a>
+        <a href="pirate.html">Пиратка</a>
+        <a href="profile.html" data-account-link>Личный кабинет</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="users-shell-v1">
+    <section class="users-head-v1">
+      <p class="tag">СООБЩЕСТВО WULINGUIDE</p>
+      <h1>Пользователи</h1>
+      <p>Игровые никнеймы, серверы и аватары зарегистрированных пользователей.</p>
+    </section>
+
+    <section id="users-grid-v1" class="users-grid-v1" aria-live="polite"></section>
+    <p id="users-message-v1" class="users-message-v1"></p>
+
+    <section id="admin-history-v1" class="admin-history-v1" hidden>
+      <div class="admin-history-head-v1">
+        <div>
+          <p class="tag">АДМИНИСТРАТОР</p>
+          <h2>История входа</h2>
+          <p>Сессии пользователей: устройство, браузер, IP и время входа.</p>
+        </div>
+        <button id="admin-history-refresh-v1" type="button">Обновить</button>
+      </div>
+
+      <div class="admin-history-note-v1">
+        Местность по IP пока не определяется автоматически. Здесь показывается реальный IP сессии; точную географию подключим отдельно через GeoIP.
+      </div>
+
+      <div class="admin-history-table-wrap-v1">
+        <table class="admin-history-table-v1">
+          <thead>
+            <tr>
+              <th>Пользователь</th>
+              <th>Устройство</th>
+              <th>IP / местность</th>
+              <th>Вход</th>
+              <th>Последняя активность</th>
+            </tr>
+          </thead>
+          <tbody id="admin-history-body-v1"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer-v44"><div class="footer-inner-v44"><span class="footer-title-v46">Руководство 9 Инь 2026</span></div></footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const auth = window.WulinGuideAuth;
+      if (!auth) return;
+
+      const grid = document.getElementById('users-grid-v1');
+      const message = document.getElementById('users-message-v1');
+      const adminSection = document.getElementById('admin-history-v1');
+      const adminBody = document.getElementById('admin-history-body-v1');
+      const refresh = document.getElementById('admin-history-refresh-v1');
+
+      const serverLabels = auth.serverLabels || {};
+      const defaultAvatar = auth.defaultAvatar || 'images/default-profile.webp';
+
+      function esc(value) {
+        return String(value ?? '').replace(/[&<>"']/g, ch => ({
+          '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'
+        }[ch]));
+      }
+
+      function avatarUrl(path) {
+        if (!path) return defaultAvatar;
+        return auth.client.storage.from('avatars').getPublicUrl(path).data.publicUrl || defaultAvatar;
+      }
+
+      function deviceLabel(ua) {
+        ua = String(ua || '');
+        let os = 'Неизвестное устройство';
+        let browser = '';
+
+        if (/Android/i.test(ua)) os = 'Android';
+        else if (/iPhone|iPad|iPod/i.test(ua)) os = 'iPhone / iPad';
+        else if (/Windows NT/i.test(ua)) os = 'Windows';
+        else if (/Macintosh|Mac OS X/i.test(ua)) os = 'macOS';
+        else if (/Linux/i.test(ua)) os = 'Linux';
+
+        if (/Edg\//i.test(ua)) browser = 'Edge';
+        else if (/OPR\//i.test(ua)) browser = 'Opera';
+        else if (/Chrome\//i.test(ua)) browser = 'Chrome';
+        else if (/Firefox\//i.test(ua)) browser = 'Firefox';
+        else if (/Safari\//i.test(ua)) browser = 'Safari';
+
+        return browser ? os + ' · ' + browser : os;
+      }
+
+      function dateTime(value) {
+        if (!value) return '—';
+        try {
+          return new Intl.DateTimeFormat('ru-RU', {
+            dateStyle:'short',
+            timeStyle:'short'
+          }).format(new Date(value));
+        } catch {
+          return String(value);
+        }
+      }
+
+      async function loadUsers() {
+        message.textContent = 'Загружаем пользователей…';
+        const { data, error } = await auth.client.rpc('list_users_directory');
+        if (error) {
+          message.textContent = String(error.message || 'Не удалось загрузить пользователей.');
+          return;
+        }
+
+        grid.innerHTML = (data || []).map(user => {
+          const name = esc(user.username || 'Пользователь');
+          const server = esc(serverLabels[user.server] || 'Сервер не выбран');
+          const avatar = esc(avatarUrl(user.avatar_path));
+          const badge = user.is_admin ? '<span class="user-admin-badge-v1">АДМИН</span>' : '';
+          return `
+            <article class="user-card-v1">
+              <img class="user-card-avatar-v1" src="${avatar}" alt="">
+              <div class="user-card-copy-v1">
+                <div class="user-card-name-row-v1">
+                  <strong>${name}</strong>
+                  ${badge}
+                </div>
+                <span>${server}</span>
+              </div>
+            </article>`;
+        }).join('');
+
+        message.textContent = data?.length ? '' : 'Пользователей пока нет.';
+      }
+
+      async function loadAdminHistory() {
+        const { data, error } = await auth.client.rpc('admin_login_history');
+        if (error) {
+          adminSection.hidden = true;
+          return;
+        }
+
+        adminSection.hidden = false;
+        adminBody.innerHTML = (data || []).map(row => {
+          const who = esc(row.username || row.email || 'Пользователь');
+          const email = esc(row.email || '');
+          const device = esc(deviceLabel(row.user_agent));
+          const ip = esc(row.ip || '—');
+
+          return `
+            <tr>
+              <td><strong>${who}</strong><small>${email}</small></td>
+              <td>${device}</td>
+              <td><span class="admin-ip-v1">${ip}</span><small>Местность: —</small></td>
+              <td>${esc(dateTime(row.created_at))}</td>
+              <td>${esc(dateTime(row.updated_at))}</td>
+            </tr>`;
+        }).join('');
+
+        if (!data?.length) {
+          adminBody.innerHTML = '<tr><td colspan="5">История входа пока пуста.</td></tr>';
+        }
+      }
+
+      refresh.addEventListener('click', async () => {
+        refresh.disabled = true;
+        refresh.textContent = 'Обновляем…';
+        try { await loadAdminHistory(); }
+        finally {
+          refresh.disabled = false;
+          refresh.textContent = 'Обновить';
+        }
+      });
+
+      await loadUsers();
+      await loadAdminHistory();
+    });
+  </script>
+</body>
+</html>
