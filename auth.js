@@ -455,6 +455,14 @@
       const { error } = await client.from('profiles').update({ about_me: about || null }).eq('id', session.user.id);
       if (error) throw error;
       return about;
+    },
+    async saveServer(server) {
+      const session = await getSession();
+      if (!session?.user) throw new Error('Требуется вход в аккаунт.');
+      if (!SERVER_LABELS[server]) throw new Error('Выберите сервер.');
+      const { error } = await client.from('profiles').update({ server }).eq('id', session.user.id);
+      if (error) throw error;
+      return server;
     }
   };
 
