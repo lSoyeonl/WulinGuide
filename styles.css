@@ -6044,3 +6044,30 @@ body.wuxia-site-v34{
 }
 .auth-resend-v1:hover{border-color:rgba(216,173,86,.32);color:#e2c276}
 .auth-resend-v1:disabled{opacity:.55;cursor:default}
+
+
+/* Keep auth fields dark, including browser autofill */
+.auth-form-v1 input,
+.auth-form-v1 select{
+  background:#04161d !important;
+  color:#e8eeee !important;
+  caret-color:#f0cf82;
+  border-color:rgba(126,169,177,.22) !important;
+  box-shadow:none;
+}
+.auth-form-v1 input::placeholder{color:#6f878a}
+.auth-form-v1 input:-webkit-autofill,
+.auth-form-v1 input:-webkit-autofill:hover,
+.auth-form-v1 input:-webkit-autofill:focus,
+.auth-form-v1 input:-webkit-autofill:active{
+  -webkit-text-fill-color:#e8eeee !important;
+  caret-color:#f0cf82 !important;
+  -webkit-box-shadow:0 0 0 1000px #04161d inset !important;
+  box-shadow:0 0 0 1000px #04161d inset !important;
+  border:1px solid rgba(126,169,177,.22) !important;
+  transition:background-color 9999s ease-out 0s;
+}
+.auth-form-v1 input:focus{
+  border-color:rgba(216,173,86,.55) !important;
+  box-shadow:0 0 0 2px rgba(216,173,86,.07) !important;
+}
