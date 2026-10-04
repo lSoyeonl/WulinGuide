@@ -6872,3 +6872,14 @@ body.profile-page-v1 #profile-about-v2{
   .users-head-v1{padding:18px}
   .admin-history-head-v1{flex-direction:column}
 }
+
+
+/* Utility cards: keep all three in one row */
+.utility-hub{
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+}
+@media(max-width:900px){
+  .utility-hub{
+    grid-template-columns:1fr !important;
+  }
+}
