@@ -6032,3 +6032,15 @@ body.wuxia-site-v34{
   .profile-actions-v1 button{width:100%}
 }
 
+
+
+.auth-resend-v1{
+  padding:10px 14px;
+  border:1px solid rgba(126,169,177,.18);
+  background:transparent;
+  color:#8fa7a9;
+  font:600 .8rem Georgia,"Times New Roman",serif;
+  cursor:pointer;
+}
+.auth-resend-v1:hover{border-color:rgba(216,173,86,.32);color:#e2c276}
+.auth-resend-v1:disabled{opacity:.55;cursor:default}
