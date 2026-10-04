@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Личный кабинет — Руководство 9 Инь</title>
   <link rel="icon" type="image/png" href="images/favicon.png">
-  <link rel="stylesheet" href="styles.css?v=20261004-2016">
+  <link rel="stylesheet" href="styles.css?v=20261004-2112">
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script defer src="supabase-config.js"></script>
-  <script defer src="auth.js?v=20261004-2058"></script>
+  <script defer src="auth.js?v=20261004-2112"></script>
 </head>
 <body class="wuxia-site-v5 wuxia-site-v44 wuxia-site-v45 profile-page-v1">
   <div class="mist-layer-v26" aria-hidden="true"></div>
@@ -29,27 +29,48 @@
     </div>
   </header>
   <main class="profile-shell-v1">
-    <section class="profile-card-v1">
-      <div class="profile-card-head-v1">
-        <div class="profile-avatar-wrap-v1">
-          <img id="profile-avatar-v1" src="images/default-profile.webp" alt="Аватар пользователя">
-          <label class="profile-avatar-button-v1" for="profile-avatar-input-v1">Изменить аватар</label>
-          <input id="profile-avatar-input-v1" type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden>
-          <button id="profile-avatar-reset-v1" class="profile-avatar-reset-v1" type="button">Вернуть стандартный</button>
-        </div>
-        <div class="profile-heading-v1">
-          <p class="tag">ЛИЧНЫЙ КАБИНЕТ</p>
-          <h1 id="profile-login-title-v1">Профиль</h1>
-          <p>Эта информация доступна только владельцу аккаунта.</p>
+    <section class="profile-card-v1 profile-card-v2">
+      <div class="profile-layout-v2">
+        <aside class="profile-left-v2">
+          <div class="profile-avatar-wrap-v1">
+            <img id="profile-avatar-v1" src="images/default-profile.webp" alt="Аватар пользователя">
+            <label class="profile-avatar-button-v1" for="profile-avatar-input-v1">Изменить аватар</label>
+            <input id="profile-avatar-input-v1" type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden>
+            <button id="profile-avatar-reset-v1" class="profile-avatar-reset-v1" type="button">Вернуть стандартный</button>
+          </div>
+
+          <div class="profile-heading-v1 profile-heading-v2">
+            <p class="tag">ЛИЧНЫЙ КАБИНЕТ</p>
+            <h1 id="profile-login-title-v1">Профиль</h1>
+            <p>Личная информация владельца аккаунта.</p>
+          </div>
+        </aside>
+
+        <div class="profile-right-v2">
+          <div class="profile-info-grid-v1 profile-info-grid-v2">
+            <div class="profile-field-v1"><span>Логин</span><strong id="profile-login-v1">—</strong></div>
+            <div class="profile-field-v1"><span>Сервер</span><strong id="profile-server-v1">—</strong></div>
+            <div class="profile-field-v1 profile-field-wide-v2"><span>Электронная почта</span><strong id="profile-email-v1">—</strong></div>
+          </div>
+
+          <div class="profile-about-v2">
+            <div class="profile-about-head-v2">
+              <div>
+                <span>О СЕБЕ</span>
+                <small>Видит только владелец аккаунта</small>
+              </div>
+              <span id="profile-about-count-v2">0 / 800</span>
+            </div>
+            <textarea id="profile-about-v2" maxlength="800" placeholder="Расскажите немного о себе..."></textarea>
+            <div class="profile-about-actions-v2">
+              <button id="profile-about-save-v2" type="button">Сохранить описание</button>
+            </div>
+          </div>
+
+          <p id="profile-message-v1" class="auth-message-v1" aria-live="polite"></p>
+          <div class="profile-actions-v1"><button id="profile-logout-v1" type="button">Выйти из аккаунта</button></div>
         </div>
       </div>
-      <div class="profile-info-grid-v1">
-        <div class="profile-field-v1"><span>Логин</span><strong id="profile-login-v1">—</strong></div>
-        <div class="profile-field-v1"><span>Электронная почта</span><strong id="profile-email-v1">—</strong></div>
-        <div class="profile-field-v1"><span>Сервер</span><strong id="profile-server-v1">—</strong></div>
-      </div>
-      <p id="profile-message-v1" class="auth-message-v1" aria-live="polite"></p>
-      <div class="profile-actions-v1"><button id="profile-logout-v1" type="button">Выйти из аккаунта</button></div>
     </section>
   </main>
   <footer class="site-footer-v44"><div class="footer-inner-v44"><span class="footer-title-v46">Руководство 9 Инь 2026</span></div></footer>
@@ -61,6 +82,12 @@
       const avatar = document.getElementById('profile-avatar-v1');
       const input = document.getElementById('profile-avatar-input-v1');
       const reset = document.getElementById('profile-avatar-reset-v1');
+      const about = document.getElementById('profile-about-v2');
+      const aboutCount = document.getElementById('profile-about-count-v2');
+      const aboutSave = document.getElementById('profile-about-save-v2');
+      const updateAboutCount = () => {
+        aboutCount.textContent = `${about.value.length} / 800`;
+      };
       try {
         const session = await auth.getSession();
         if (!session?.user) return;
@@ -71,6 +98,8 @@
         document.getElementById('profile-email-v1').textContent = session.user.email || '—';
         document.getElementById('profile-server-v1').textContent = auth.serverLabels[profile.server] || 'Не выбран';
         avatar.src = auth.getAvatarUrl(profile);
+        about.value = profile.about_me || '';
+        updateAboutCount();
       } catch (err) {
         message.textContent = String(err?.message || 'Не удалось загрузить профиль.');
       }
@@ -94,6 +123,23 @@
           message.textContent = 'Стандартный аватар восстановлен.';
         } catch (err) {
           message.textContent = String(err?.message || 'Не удалось восстановить аватар.');
+        }
+      });
+      about.addEventListener('input', updateAboutCount);
+      aboutSave.addEventListener('click', async () => {
+        aboutSave.disabled = true;
+        aboutSave.textContent = 'Сохраняем…';
+        message.textContent = '';
+        try {
+          const saved = await auth.saveAboutMe(about.value);
+          about.value = saved;
+          updateAboutCount();
+          message.textContent = 'Описание сохранено.';
+        } catch (err) {
+          message.textContent = String(err?.message || 'Не удалось сохранить описание.');
+        } finally {
+          aboutSave.disabled = false;
+          aboutSave.textContent = 'Сохранить описание';
         }
       });
       document.getElementById('profile-logout-v1').addEventListener('click', () => auth.signOut());
