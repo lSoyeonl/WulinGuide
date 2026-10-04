@@ -158,15 +158,6 @@
         setBusy(form, false);
       }
     });
-        if (error) throw error;
-        message.textContent = 'Новый код отправлен.';
-      } catch (err) {
-        message.textContent = String(err?.message || 'Не удалось отправить код повторно.');
-      } finally {
-        button.disabled = false;
-      }
-    });
-
 
     modal.querySelector('[data-auth-form="verify"]').addEventListener('submit', async (e) => {
       e.preventDefault();
