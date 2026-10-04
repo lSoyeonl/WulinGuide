@@ -6174,3 +6174,24 @@ body.profile-page-v1 .footer-title-v46::after{
   body.profile-page-v1 .footer-title-v46::before,
   body.profile-page-v1 .footer-title-v46::after{width:56px}
 }
+
+
+/* Auth confirmation status */
+.auth-status-v1{
+  padding:6px 0 2px;
+}
+.auth-status-title-v1{
+  margin:0 0 10px;
+  color:#f0ddaa;
+  font:600 1.08rem/1.3 Georgia,"Times New Roman",serif;
+}
+.auth-status-text-v1{
+  margin:0;
+  color:#9fb0b2;
+  line-height:1.55;
+  font-size:.9rem;
+}
+.auth-status-text-v1 strong{
+  color:#e7d6aa;
+  font-weight:600;
+}
