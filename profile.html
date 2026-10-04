@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Личный кабинет — Руководство 9 Инь</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="supabase-config.js"></script>
+  <script defer src="auth.js"></script>
+</head>
+<body class="wuxia-site-v5 profile-page-v1">
+  <div class="mist-layer-v26" aria-hidden="true"></div>
+  <div class="ash-layer-v26" aria-hidden="true"></div>
+  <div class="ember-layer-v26" aria-hidden="true"></div>
+  <header class="header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="Руководство 9 Инь">
+        <span class="round-brand-icon v40-brand-image" aria-hidden="true"><img src="images/brand-scroll-icon.png" alt=""></span>
+        <span class="brand-copy"><strong>Руководство 9 Инь</strong><small>БАЗА ЗНАНИЙ</small></span>
+      </a>
+      <nav>
+        <a href="index.html">Главная</a>
+        <a href="taiwan.html">Тайвань</a>
+        <a href="pirate.html">Пиратка</a>
+        <a href="profile.html" data-account-link>Личный кабинет</a>
+      </nav>
+    </div>
+  </header>
+  <main class="profile-shell-v1">
+    <section class="profile-card-v1">
+      <div class="profile-card-head-v1">
+        <div class="profile-avatar-wrap-v1">
+          <img id="profile-avatar-v1" src="images/default-profile.webp" alt="Аватар пользователя">
+          <label class="profile-avatar-button-v1" for="profile-avatar-input-v1">Изменить аватар</label>
+          <input id="profile-avatar-input-v1" type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden>
+          <button id="profile-avatar-reset-v1" class="profile-avatar-reset-v1" type="button">Вернуть стандартный</button>
+        </div>
+        <div class="profile-heading-v1">
+          <p class="tag">ЛИЧНЫЙ КАБИНЕТ</p>
+          <h1 id="profile-login-title-v1">Профиль</h1>
+          <p>Эта информация доступна только владельцу аккаунта.</p>
+        </div>
+      </div>
+      <div class="profile-info-grid-v1">
+        <div class="profile-field-v1"><span>Логин</span><strong id="profile-login-v1">—</strong></div>
+        <div class="profile-field-v1"><span>Электронная почта</span><strong id="profile-email-v1">—</strong></div>
+        <div class="profile-field-v1"><span>Сервер</span><strong id="profile-server-v1">—</strong></div>
+      </div>
+      <p id="profile-message-v1" class="auth-message-v1" aria-live="polite"></p>
+      <div class="profile-actions-v1"><button id="profile-logout-v1" type="button">Выйти из аккаунта</button></div>
+    </section>
+  </main>
+  <footer class="site-footer-v44"><div class="footer-inner-v44"><span class="footer-title-v46">Руководство 9 Инь 2026</span></div></footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const auth = window.WulinGuideAuth;
+      if (!auth) return;
+      const message = document.getElementById('profile-message-v1');
+      const avatar = document.getElementById('profile-avatar-v1');
+      const input = document.getElementById('profile-avatar-input-v1');
+      const reset = document.getElementById('profile-avatar-reset-v1');
+      try {
+        const session = await auth.getSession();
+        if (!session?.user) return;
+        const profile = await auth.getProfile(session.user.id);
+        const username = profile.username || 'Профиль';
+        document.getElementById('profile-login-title-v1').textContent = username;
+        document.getElementById('profile-login-v1').textContent = username;
+        document.getElementById('profile-email-v1').textContent = session.user.email || '—';
+        document.getElementById('profile-server-v1').textContent = auth.serverLabels[profile.server] || 'Не выбран';
+        avatar.src = auth.getAvatarUrl(profile);
+      } catch (err) {
+        message.textContent = String(err?.message || 'Не удалось загрузить профиль.');
+      }
+      input.addEventListener('change', async () => {
+        const file = input.files && input.files[0];
+        if (!file) return;
+        message.textContent = 'Загрузка аватара…';
+        try {
+          avatar.src = await auth.uploadAvatar(file) + `?v=${Date.now()}`;
+          message.textContent = 'Аватар обновлён.';
+        } catch (err) {
+          message.textContent = String(err?.message || 'Не удалось загрузить аватар.');
+        } finally {
+          input.value = '';
+        }
+      });
+      reset.addEventListener('click', async () => {
+        message.textContent = 'Возвращаем стандартный аватар…';
+        try {
+          avatar.src = await auth.resetAvatar();
+          message.textContent = 'Стандартный аватар восстановлен.';
+        } catch (err) {
+          message.textContent = String(err?.message || 'Не удалось восстановить аватар.');
+        }
+      });
+      document.getElementById('profile-logout-v1').addEventListener('click', () => auth.signOut());
+    });
+  </script>
+</body>
+</html>
