@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  const DEFAULT_AVATAR = 'images/default-profile.webp';
+  const DEFAULT_AVATAR = 'images/default-profile.svg';
   const SERVER_LABELS = {
     taiwan: 'Тайвань',
     pirate_china: 'Пиратка Китай',
