@@ -6999,3 +6999,27 @@ body.profile-page-v1 #profile-about-v2{
 .gold-topup-copy-v1 span{
   line-height:1.2;
 }
+
+
+/* Centered animated gold top-up notice */
+.gold-topup-notice-v1{
+  text-align:center;
+}
+.gold-topup-copy-v1{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+.gold-topup-copy-v1 span{
+  justify-content:center;
+}
+.gold-topup-notice-v1.reveal{
+  opacity:0;
+  transform:translateY(16px);
+}
+.gold-topup-notice-v1.reveal.is-visible{
+  opacity:1;
+  transform:translateY(0);
+}
