@@ -7023,3 +7023,28 @@ body.profile-page-v1 #profile-about-v2{
   opacity:1;
   transform:translateY(0);
 }
+
+
+/* Gold top-up notice compact left alignment */
+.gold-topup-notice-v1{
+  width:fit-content !important;
+  max-width:min(760px,100%) !important;
+  justify-self:start !important;
+  margin:10px 0 0 !important;
+  padding:10px 16px !important;
+  text-align:left !important;
+}
+.gold-topup-copy-v1{
+  width:auto !important;
+  align-items:flex-start !important;
+  justify-content:center !important;
+  text-align:left !important;
+}
+.gold-topup-copy-v1 span{
+  justify-content:flex-start !important;
+}
+@media(max-width:760px){
+  .gold-topup-notice-v1{
+    width:100% !important;
+  }
+}
