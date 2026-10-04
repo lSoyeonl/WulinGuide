@@ -6883,3 +6883,11 @@ body.profile-page-v1 #profile-about-v2{
     grid-template-columns:1fr !important;
   }
 }
+
+
+/* Community modal help spacing */
+.community-help-v68{
+  margin:18px 0 2px !important;
+  padding:10px 0 6px;
+  text-align:center;
+}
