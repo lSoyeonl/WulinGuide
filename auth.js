@@ -374,6 +374,35 @@
     setContentProtection(!isAdminSession(session));
   }
 
+
+  function setCopyProtection(session) {
+    const isAdmin = String(session?.user?.email || '').toLowerCase() === ADMIN_EMAIL;
+    document.documentElement.classList.toggle('content-protected-v1', !isAdmin);
+    document.body?.classList.toggle('content-protected-v1', !isAdmin);
+
+    if (window.__wulinCopyProtectionBound) return;
+    window.__wulinCopyProtectionBound = true;
+
+    const guard = (e) => {
+      if (!document.documentElement.classList.contains('content-protected-v1')) return;
+      const target = e.target;
+      if (target && target.closest && target.closest('input, textarea, select, [contenteditable="true"]')) return;
+      e.preventDefault();
+    };
+
+    ['copy', 'cut', 'contextmenu', 'dragstart', 'selectstart'].forEach(type => {
+      document.addEventListener(type, guard, true);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!document.documentElement.classList.contains('content-protected-v1')) return;
+      const target = e.target;
+      if (target && target.closest && target.closest('input, textarea, select, [contenteditable="true"]')) return;
+      const key = String(e.key || '').toLowerCase();
+      if ((e.ctrlKey || e.metaKey) && ['c', 'x', 'a'].includes(key)) e.preventDefault();
+    }, true);
+  }
+
   async function continueAfterAuth() {
     const params = new URLSearchParams(location.search);
     const returnPage = safeReturnPage(params.get('return'));
