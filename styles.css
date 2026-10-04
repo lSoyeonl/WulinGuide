@@ -6981,3 +6981,21 @@ body.profile-page-v1 #profile-about-v2{
 .gold-topup-copy-v1{
   width:100%;
 }
+
+
+/* Compact gold top-up notice */
+.gold-topup-notice-v1{
+  min-height:0 !important;
+  padding:10px 16px !important;
+  margin-top:10px !important;
+}
+.gold-topup-copy-v1 small{
+  margin-bottom:3px;
+}
+.gold-topup-copy-v1 strong{
+  margin:3px 0 4px !important;
+  line-height:1.2 !important;
+}
+.gold-topup-copy-v1 span{
+  line-height:1.2;
+}
