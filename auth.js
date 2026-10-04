@@ -8,7 +8,7 @@
     private_dubu: 'Приват Дубу',
     china: 'Китай'
   };
-  const PRIVATE_PAGES = ['beginners.html', 'taiwan.html', 'pirate.html', 'game-content.html', 'profile.html'];
+  const PRIVATE_PAGES = ['beginners.html', 'taiwan.html', 'pirate.html', 'game-content.html', 'profile.html', 'users.html'];
   let pendingSignupEmail = '';
   const page = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
   const isPublicPage = page === 'index.html' || page === '';
