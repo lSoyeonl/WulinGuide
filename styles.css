@@ -8377,3 +8377,34 @@ body.profile-page-v1 #profile-login-save-v1:hover{
     background:none;
   }
 }
+
+/* Azure Guard card cleanup v12 */
+.azure-page-v3 .azure-card-v3::before,
+.azure-page-v3 .azure-card-v3::after,
+.azure-page-v3 .azure-skill-v3::before,
+.azure-page-v3 .azure-skill-v3::after,
+.azure-page-v3 .azure-neigong-left-v4::before,
+.azure-page-v3 .azure-neigong-effects-v4::before,
+.azure-page-v3 .azure-neigong-frame-v5::before{
+  background:none !important;
+  opacity:0 !important;
+}
+.azure-page-v3 .azure-card-v3,
+.azure-page-v3 .azure-skill-v3,
+.azure-page-v3 .azure-neigong-left-v4,
+.azure-page-v3 .azure-neigong-effects-v4,
+.azure-page-v3 .azure-neigong-frame-v5{
+  background:
+    radial-gradient(circle at 86% 18%, rgba(66,210,199,.08), transparent 22%),
+    linear-gradient(145deg, rgba(7,28,34,.98), rgba(3,15,20,.995) 78%) !important;
+}
+.azure-page-v3 .azure-combat-section-v4 .azure-skill-v3{
+  background:
+    radial-gradient(circle at 86% 18%, rgba(72,216,205,.12), transparent 23%),
+    linear-gradient(145deg, rgba(7,28,34,.98), rgba(3,15,20,.995) 78%) !important;
+}
+.azure-page-v3 .azure-reworks-section-v4 .azure-skill-v3{
+  background:
+    radial-gradient(circle at 86% 18%, rgba(170,118,245,.10), transparent 23%),
+    linear-gradient(145deg, rgba(8,24,34,.98), rgba(3,15,20,.995) 78%) !important;
+}
