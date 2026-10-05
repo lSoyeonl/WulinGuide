@@ -7228,3 +7228,43 @@ html.content-protected-v1 [contenteditable="true"]{
     visibility:hidden !important;
   }
 }
+
+
+/* Profile username field styling */
+body.profile-page-v1 #profile-login-input-v1{
+  width:100%;
+  min-height:34px;
+  padding:7px 9px;
+  border:1px solid rgba(126,169,177,.22);
+  background:#04161d !important;
+  color:#e6d8b4 !important;
+  caret-color:#f0cf82;
+  outline:none;
+  font:600 .88rem "Golos Text", Arial, sans-serif !important;
+  box-shadow:none !important;
+}
+body.profile-page-v1 #profile-login-input-v1:focus{
+  border-color:rgba(216,173,86,.55);
+  box-shadow:0 0 0 2px rgba(216,173,86,.07) !important;
+}
+body.profile-page-v1 #profile-login-input-v1:-webkit-autofill,
+body.profile-page-v1 #profile-login-input-v1:-webkit-autofill:hover,
+body.profile-page-v1 #profile-login-input-v1:-webkit-autofill:focus{
+  -webkit-text-fill-color:#e6d8b4 !important;
+  -webkit-box-shadow:0 0 0 1000px #04161d inset !important;
+  box-shadow:0 0 0 1000px #04161d inset !important;
+  border:1px solid rgba(126,169,177,.22) !important;
+}
+body.profile-page-v1 #profile-login-save-v1{
+  min-height:34px;
+  padding:7px 10px;
+  border:1px solid rgba(216,173,86,.28);
+  background:rgba(216,173,86,.06);
+  color:#e7c878;
+  font:600 .72rem "Golos Text", Arial, sans-serif !important;
+  cursor:pointer;
+}
+body.profile-page-v1 #profile-login-save-v1:hover{
+  border-color:rgba(216,173,86,.5);
+  background:rgba(216,173,86,.1);
+}
