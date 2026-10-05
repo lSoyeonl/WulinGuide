@@ -8408,3 +8408,61 @@ body.profile-page-v1 #profile-login-save-v1:hover{
     radial-gradient(circle at 86% 18%, rgba(170,118,245,.10), transparent 23%),
     linear-gradient(145deg, rgba(8,24,34,.98), rgba(3,15,20,.995) 78%) !important;
 }
+
+/* Azure Guard hero cleanup v13 */
+.azure-page-v3 .azure-hero-v3{
+  background:
+    radial-gradient(circle at 76% 42%, rgba(66,210,199,.10), transparent 18%),
+    radial-gradient(circle at 84% 26%, rgba(223,182,93,.03), transparent 20%),
+    linear-gradient(90deg, rgba(4,20,26,.94) 0%, rgba(4,20,26,.90) 42%, rgba(4,20,26,.62) 58%, rgba(4,20,26,.34) 100%),
+    linear-gradient(135deg, rgba(5,31,38,.98), rgba(2,16,21,.995));
+}
+.azure-page-v3 .azure-hero-v3::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  background:
+    radial-gradient(ellipse at 66% 56%, rgba(88,216,207,.08), transparent 24%),
+    radial-gradient(ellipse at 61% 20%, rgba(223,182,93,.035), transparent 14%),
+    radial-gradient(ellipse at 92% 30%, rgba(84,214,205,.05), transparent 10%),
+    radial-gradient(ellipse at 90% 74%, rgba(84,214,205,.04), transparent 11%);
+  opacity:1;
+}
+.azure-page-v3 .azure-hero-v3::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  background:
+    radial-gradient(circle at 59% 18%, rgba(255,255,255,.03), transparent 2px),
+    radial-gradient(circle at 67% 66%, rgba(223,182,93,.07), transparent 2.4px),
+    radial-gradient(circle at 81% 40%, rgba(84,214,205,.08), transparent 2.2px),
+    radial-gradient(circle at 88% 60%, rgba(223,182,93,.06), transparent 2px),
+    radial-gradient(circle at 75% 80%, rgba(84,214,205,.06), transparent 1.8px);
+  opacity:.75;
+}
+.azure-page-v3 .azure-hero-copy-v3,
+.azure-page-v3 .azure-hero-visual-v3{
+  position:relative;
+  z-index:1;
+}
+.azure-page-v3 .azure-hero-copy-v3{
+  background:linear-gradient(90deg, rgba(3,17,22,.12), rgba(3,17,22,0));
+}
+.azure-page-v3 .azure-hero-visual-guard-v6{
+  background:
+    radial-gradient(circle at 50% 46%, rgba(60,207,198,.12), transparent 40%),
+    linear-gradient(180deg, rgba(5,34,40,.01), rgba(2,15,20,.08));
+}
+.azure-page-v3 .azure-hero-visual-guard-v6::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(ellipse at 58% 88%, rgba(198,233,227,.05), transparent 14%);
+  opacity:.6;
+}
