@@ -525,6 +525,22 @@
       if (error) throw error;
       return DEFAULT_AVATAR;
     },
+    async saveUsername(value) {
+      const session = await getSession();
+      if (!session?.user) throw new Error('Требуется вход в аккаунт.');
+      const username = String(value || '').trim();
+      if (username.length < 3 || username.length > 32) throw new Error('Имя пользователя: от 3 до 32 символов.');
+      if (!/^[A-Za-zА-Яа-яЁё0-9_.-]+$/.test(username)) throw new Error('Используйте буквы, цифры, точку, дефис или подчёркивание.');
+      const { error } = await client.from('profiles').update({ username }).eq('id', session.user.id);
+      if (error) {
+        if (/duplicate key|unique constraint/i.test(String(error.message || ''))) {
+          throw new Error('Такое имя пользователя уже занято.');
+        }
+        throw error;
+      }
+      await refreshAccountLinks();
+      return username;
+    },
     async saveAboutMe(value) {
       const session = await getSession();
       if (!session?.user) throw new Error('Требуется вход в аккаунт.');
