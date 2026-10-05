@@ -7351,8 +7351,8 @@ body.profile-page-v1 #profile-login-save-v1:hover{
   width:100%;
   aspect-ratio:1;
   background-image:url("images/schools-sprite.webp");
-  background-size:600% 600%;
-  background-position:calc(var(--sx) * 20%) calc(var(--sy) * 20%);
+  background-size:700% 500%;
+  background-position:calc(var(--sx) * 16.6666667%) calc(var(--sy) * 25%);
   background-repeat:no-repeat;
   border:1px solid rgba(216,173,86,.14);
 }
@@ -7380,4 +7380,32 @@ body.profile-page-v1 #profile-login-save-v1:hover{
   .paths-hero-v1{padding:28px 22px}
   .paths-grid-v1{grid-template-columns:1fr}
   .paths-tabs-v1{flex-wrap:wrap}
+}
+
+
+/* Directory soon placeholders */
+.path-card-soon-v1{
+  min-height:0;
+  opacity:.78;
+}
+.path-icon-soon-v1{
+  width:100%;
+  aspect-ratio:1;
+  display:grid;
+  place-items:center;
+  border:1px dashed rgba(216,173,86,.20);
+  background:
+    radial-gradient(circle at 50% 42%,rgba(216,173,86,.055),transparent 34%),
+    linear-gradient(145deg,rgba(6,26,33,.82),rgba(3,16,22,.94));
+}
+.path-icon-soon-v1 span{
+  color:#8d7a52;
+  font-size:.78rem;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+.path-card-soon-v1 .path-card-copy-v1 h3{
+  color:#7e8e8f;
+  font-weight:500;
 }
