@@ -8203,23 +8203,18 @@ body.profile-page-v1 #profile-login-save-v1:hover{
   text-shadow:0 0 12px rgba(240,207,120,.08);
 }
 
-/* Azure Guard card background fix v10 */
-.azure-page-v3 .azure-meta-v3 div,
+/* Azure Guard card background style v9 */
 .azure-page-v3 .azure-card-v3,
 .azure-page-v3 .azure-skill-v3,
 .azure-page-v3 .azure-neigong-left-v4,
 .azure-page-v3 .azure-neigong-effects-v4{
   position:relative;
   overflow:hidden;
+  isolation:isolate;
   background:
-    radial-gradient(circle at 88% 18%, rgba(74,214,205,.10), transparent 22%),
-    linear-gradient(180deg, rgba(8,34,41,.96), rgba(3,17,22,.985) 78%);
-  box-shadow:
-    inset 0 1px 0 rgba(98,224,216,.05),
-    inset 0 0 22px rgba(74,214,205,.025),
-    0 0 16px rgba(0,0,0,.08);
+    radial-gradient(circle at 86% 18%, rgba(66,210,199,.10), transparent 25%),
+    linear-gradient(145deg, rgba(7,28,34,.98), rgba(3,15,20,.995) 78%);
 }
-.azure-page-v3 .azure-meta-v3 div::before,
 .azure-page-v3 .azure-card-v3::before,
 .azure-page-v3 .azure-skill-v3::before,
 .azure-page-v3 .azure-neigong-left-v4::before,
@@ -8228,15 +8223,16 @@ body.profile-page-v1 #profile-login-save-v1:hover{
   position:absolute;
   inset:0;
   pointer-events:none;
+  z-index:0;
   background:
-    linear-gradient(90deg, rgba(88,226,217,.20), transparent 18%) 0 0 / 1px 100% no-repeat,
-    linear-gradient(180deg, rgba(88,226,217,.08), transparent 18%, transparent 82%, rgba(223,182,93,.06)) 0 0 / 100% 100% no-repeat,
-    radial-gradient(circle at 14% 18%, rgba(99,228,218,.09), transparent 3px),
-    radial-gradient(circle at 87% 14%, rgba(223,182,93,.08), transparent 2.5px),
-    radial-gradient(circle at 78% 74%, rgba(76,214,204,.05), transparent 3px);
-  opacity:.9;
+    radial-gradient(circle at 88% 50%, transparent 0 17%, rgba(223,182,93,.14) 17.4%, rgba(223,182,93,.14) 17.9%, transparent 18.3%),
+    radial-gradient(circle at 88% 50%, transparent 0 21%, rgba(72,216,205,.045) 21.4%, rgba(72,216,205,.045) 21.9%, transparent 22.3%),
+    linear-gradient(180deg, transparent 8%, rgba(223,182,93,.12) 8%, rgba(223,182,93,.12) 92%, transparent 92%) 92% 50% / 2px 66% no-repeat,
+    linear-gradient(155deg, transparent 0 47%, rgba(223,182,93,.12) 47.5%, rgba(223,182,93,.12) 48.6%, transparent 49.2%) 86% 31% / 68px 120px no-repeat,
+    linear-gradient(28deg, transparent 0 47%, rgba(223,182,93,.12) 47.5%, rgba(223,182,93,.12) 48.6%, transparent 49.2%) 84% 64% / 70px 118px no-repeat,
+    radial-gradient(circle at 80% 78%, rgba(72,216,205,.045), transparent 16%);
+  opacity:.52;
 }
-.azure-page-v3 .azure-meta-v3 div > *,
 .azure-page-v3 .azure-card-v3 > *,
 .azure-page-v3 .azure-skill-v3 > *,
 .azure-page-v3 .azure-neigong-left-v4 > *,
@@ -8244,77 +8240,70 @@ body.profile-page-v1 #profile-login-save-v1:hover{
   position:relative;
   z-index:1;
 }
-
-/* Верхние мини-карточки Оружие / Свойство */
-.azure-page-v3 .azure-meta-v3 div{
-  border-color:rgba(223,182,93,.24);
+.azure-page-v3 .azure-card-v3::after,
+.azure-page-v3 .azure-skill-v3::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
   background:
-    radial-gradient(circle at 10% 50%, rgba(74,214,205,.12), transparent 20%),
-    linear-gradient(180deg, rgba(7,32,39,.96), rgba(3,17,22,.985) 80%);
+    radial-gradient(circle at 12% 12%, rgba(255,228,145,.08), transparent 3px),
+    radial-gradient(circle at 82% 24%, rgba(79,216,206,.10), transparent 2px),
+    radial-gradient(circle at 74% 82%, rgba(223,182,93,.08), transparent 2.5px),
+    radial-gradient(circle at 90% 68%, rgba(76,213,203,.08), transparent 2px);
+  opacity:.75;
 }
-.azure-page-v3 .azure-meta-v3 div::before{
-  background:
-    linear-gradient(90deg, rgba(84,223,214,.55), transparent 24%) 0 0 / 2px 100% no-repeat,
-    radial-gradient(circle at 14% 50%, rgba(80,220,210,.15), transparent 18%),
-    linear-gradient(180deg, rgba(255,255,255,.03), transparent 18%, transparent 82%, rgba(223,182,93,.05));
-}
-
-/* Обычные карточки */
-.azure-page-v3 .azure-card-v3{
-  border-color:rgba(223,182,93,.22);
-}
-
-/* Нейгун */
 .azure-page-v3 .azure-neigong-frame-v5{
+  position:relative;
+  overflow:hidden;
   background:
-    radial-gradient(circle at 88% 18%, rgba(74,214,205,.08), transparent 24%),
-    linear-gradient(180deg, rgba(7,28,34,.95), rgba(3,15,20,.99) 82%);
+    radial-gradient(circle at 85% 16%, rgba(66,210,199,.08), transparent 23%),
+    linear-gradient(145deg, rgba(7,28,34,.96), rgba(3,15,20,.985) 78%);
+  box-shadow:
+    inset 0 0 18px rgba(66,210,199,.020),
+    0 0 18px rgba(0,0,0,.14);
 }
-.azure-page-v3 .azure-neigong-left-v4,
-.azure-page-v3 .azure-neigong-effects-v4{
-  border-color:rgba(223,182,93,.22);
+.azure-page-v3 .azure-neigong-frame-v5::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 88% 50%, transparent 0 18%, rgba(223,182,93,.12) 18.4%, rgba(223,182,93,.12) 18.8%, transparent 19.2%),
+    linear-gradient(180deg, transparent 10%, rgba(223,182,93,.10) 10%, rgba(223,182,93,.10) 90%, transparent 90%) 92% 50% / 2px 68% no-repeat,
+    linear-gradient(155deg, transparent 0 47%, rgba(223,182,93,.10) 47.5%, rgba(223,182,93,.10) 48.4%, transparent 49%) 86% 30% / 70px 124px no-repeat,
+    linear-gradient(28deg, transparent 0 47%, rgba(223,182,93,.10) 47.5%, rgba(223,182,93,.10) 48.4%, transparent 49%) 84% 64% / 72px 122px no-repeat;
+  opacity:.48;
 }
 
-/* Боевые навыки */
+/* Акцентные оттенки для разных блоков */
 .azure-page-v3 .azure-combat-section-v4 .azure-skill-v3{
-  border-color:rgba(74,214,205,.34);
   background:
-    radial-gradient(circle at 88% 18%, rgba(74,214,205,.16), transparent 24%),
-    linear-gradient(180deg, rgba(7,34,41,.96), rgba(3,17,22,.985) 78%);
-  box-shadow:
-    inset 0 1px 0 rgba(98,224,216,.06),
-    inset 0 0 24px rgba(74,214,205,.04),
-    0 0 18px rgba(74,214,205,.045);
+    radial-gradient(circle at 86% 18%, rgba(72,216,205,.14), transparent 25%),
+    linear-gradient(145deg, rgba(7,28,34,.98), rgba(3,15,20,.995) 78%);
 }
-.azure-page-v3 .azure-combat-section-v4 .azure-skill-v3::before{
-  background:
-    linear-gradient(90deg, rgba(80,221,212,.38), transparent 20%) 0 0 / 2px 100% no-repeat,
-    linear-gradient(180deg, rgba(88,226,217,.10), transparent 18%, transparent 82%, rgba(88,226,217,.04)),
-    radial-gradient(circle at 12% 18%, rgba(99,228,218,.10), transparent 3px),
-    radial-gradient(circle at 88% 14%, rgba(84,223,214,.09), transparent 2.5px);
-}
-
-/* Реворки */
 .azure-page-v3 .azure-reworks-section-v4 .azure-skill-v3{
-  border-color:rgba(171,118,245,.36);
   background:
-    radial-gradient(circle at 88% 18%, rgba(171,118,245,.14), transparent 24%),
-    linear-gradient(180deg, rgba(10,26,38,.96), rgba(4,16,23,.985) 78%);
-  box-shadow:
-    inset 0 1px 0 rgba(197,160,255,.05),
-    inset 0 0 24px rgba(171,118,245,.045),
-    0 0 18px rgba(171,118,245,.04);
+    radial-gradient(circle at 86% 18%, rgba(170,118,245,.12), transparent 25%),
+    linear-gradient(145deg, rgba(8,24,34,.98), rgba(3,15,20,.995) 78%);
 }
 .azure-page-v3 .azure-reworks-section-v4 .azure-skill-v3::before{
   background:
-    linear-gradient(90deg, rgba(189,140,255,.42), transparent 20%) 0 0 / 2px 100% no-repeat,
-    linear-gradient(180deg, rgba(189,140,255,.10), transparent 18%, transparent 82%, rgba(189,140,255,.04)),
-    radial-gradient(circle at 12% 18%, rgba(198,155,255,.10), transparent 3px),
-    radial-gradient(circle at 88% 14%, rgba(189,140,255,.09), transparent 2.5px);
+    radial-gradient(circle at 88% 50%, transparent 0 17%, rgba(189,140,255,.16) 17.4%, rgba(189,140,255,.16) 17.9%, transparent 18.3%),
+    radial-gradient(circle at 88% 50%, transparent 0 21%, rgba(189,140,255,.05) 21.4%, rgba(189,140,255,.05) 21.9%, transparent 22.3%),
+    linear-gradient(180deg, transparent 8%, rgba(189,140,255,.12) 8%, rgba(189,140,255,.12) 92%, transparent 92%) 92% 50% / 2px 66% no-repeat,
+    linear-gradient(155deg, transparent 0 47%, rgba(189,140,255,.12) 47.5%, rgba(189,140,255,.12) 48.6%, transparent 49.2%) 86% 31% / 68px 120px no-repeat,
+    linear-gradient(28deg, transparent 0 47%, rgba(189,140,255,.12) 47.5%, rgba(189,140,255,.12) 48.6%, transparent 49.2%) 84% 64% / 70px 118px no-repeat,
+    radial-gradient(circle at 80% 78%, rgba(189,140,255,.05), transparent 16%);
+  opacity:.56;
 }
-
-/* Чуть заметнее заголовки навыков */
-.azure-page-v3 .azure-skill-top-v3 h3{
-  color:#f0cf78;
-  text-shadow:0 0 10px rgba(240,207,120,.08);
+@media(max-width:700px){
+  .azure-page-v3 .azure-card-v3::before,
+  .azure-page-v3 .azure-skill-v3::before,
+  .azure-page-v3 .azure-neigong-left-v4::before,
+  .azure-page-v3 .azure-neigong-effects-v4::before,
+  .azure-page-v3 .azure-neigong-frame-v5::before{
+    opacity:.34;
+  }
 }
