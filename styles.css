@@ -8032,3 +8032,127 @@ body.profile-page-v1 #profile-login-save-v1:hover{
   .azure-hero-visual-guard-v6 img{max-height:340px}
   .azure-hero-copy-v3{padding:30px 26px}
 }
+
+
+/* Azure Guard compact luminous polish v7 */
+.azure-page-v3 .azure-shell-v3{padding-top:28px;padding-bottom:54px}
+.azure-page-v3 .azure-back-v2{margin-bottom:12px}
+.azure-page-v3 .azure-hero-v3{
+  position:relative;
+  min-height:390px;
+  grid-template-columns:minmax(0,1.08fr) minmax(330px,.72fr);
+  border-color:rgba(225,184,91,.38);
+  background:
+    radial-gradient(circle at 84% 46%,rgba(50,196,188,.13),transparent 27%),
+    linear-gradient(135deg,rgba(5,31,38,.98),rgba(2,16,21,.995));
+  box-shadow:
+    0 0 32px rgba(58,211,202,.075),
+    0 0 0 1px rgba(224,181,86,.035) inset,
+    0 0 34px rgba(224,181,86,.028) inset;
+}
+.azure-page-v3 .azure-hero-v3::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(221,181,90,.34),transparent 16%,transparent 84%,rgba(221,181,90,.28)) top/100% 1px no-repeat,
+    linear-gradient(90deg,rgba(86,229,216,.12),transparent 32%,transparent 72%,rgba(86,229,216,.1)) bottom/100% 1px no-repeat;
+  opacity:.9;
+}
+.azure-page-v3 .azure-hero-copy-v3{padding:32px 36px}
+.azure-page-v3 .azure-hero-copy-v3 .tag{
+  color:#e4ba5e;
+  text-shadow:0 0 14px rgba(226,184,91,.18);
+}
+.azure-page-v3 .azure-hero-copy-v3 h1{
+  margin:4px 0 12px;
+  font-size:clamp(3.6rem,6.3vw,6.2rem);
+  text-shadow:0 0 24px rgba(235,239,232,.025);
+}
+.azure-page-v3 .azure-hero-copy-v3 h1 span{
+  color:#deb75c;
+  text-shadow:0 0 20px rgba(222,183,92,.12);
+}
+.azure-page-v3 .azure-lead-v3,
+.azure-page-v3 .azure-sub-v3{line-height:1.5}
+.azure-page-v3 .azure-lead-v3{margin:0 0 5px}
+.azure-page-v3 .azure-sub-v3{margin:0}
+.azure-page-v3 .azure-meta-v3{margin-top:15px;gap:9px}
+.azure-page-v3 .azure-meta-v3 div{
+  position:relative;
+  overflow:hidden;
+  padding:11px 13px;
+  border-color:rgba(220,178,83,.28);
+  background:linear-gradient(135deg,rgba(5,28,34,.82),rgba(2,17,22,.72));
+  box-shadow:
+    inset 0 0 19px rgba(66,212,202,.025),
+    0 0 14px rgba(66,212,202,.02);
+}
+.azure-page-v3 .azure-meta-v3 div::before{
+  content:"";
+  position:absolute;
+  left:0;top:0;bottom:0;width:2px;
+  background:linear-gradient(180deg,transparent,rgba(75,221,210,.55),transparent);
+  box-shadow:0 0 10px rgba(75,221,210,.24);
+}
+.azure-page-v3 .azure-meta-v3 strong{text-shadow:0 0 12px rgba(228,188,92,.08)}
+.azure-page-v3 .azure-hero-visual-guard-v6{
+  min-height:390px;
+  padding:8px 10px 0;
+  background:
+    radial-gradient(circle at 50% 48%,rgba(60,207,198,.16),transparent 43%),
+    radial-gradient(circle at 50% 60%,rgba(221,178,83,.045),transparent 56%),
+    linear-gradient(180deg,rgba(5,34,40,.03),rgba(2,15,20,.28));
+}
+.azure-page-v3 .azure-hero-visual-guard-v6::before{
+  inset:6% 7%;
+  border-color:rgba(223,180,83,.30);
+  box-shadow:
+    0 0 28px rgba(70,220,208,.10),
+    0 0 26px rgba(223,180,83,.045) inset;
+}
+.azure-page-v3 .azure-hero-visual-guard-v6 img{
+  width:min(100%,440px);
+  max-height:386px;
+  object-fit:contain;
+  object-position:center bottom;
+  filter:
+    drop-shadow(0 16px 22px rgba(0,0,0,.42))
+    drop-shadow(0 0 12px rgba(67,212,202,.10));
+}
+.azure-page-v3 .azure-section-v3{margin-top:26px}
+.azure-page-v3 .azure-section-head-v3{margin-bottom:10px;padding-bottom:7px}
+.azure-page-v3 .azure-section-head-v3 h2{margin:4px 0 2px}
+.azure-page-v3 .azure-section-head-v3 p{line-height:1.45}
+.azure-page-v3 .azure-grid-v3{gap:9px}
+.azure-page-v3 .azure-compact-row-v3{margin-top:9px}
+.azure-page-v3 .azure-card-v3,
+.azure-page-v3 .azure-skill-v3{
+  border-color:rgba(216,173,86,.22);
+  box-shadow:
+    inset 0 0 20px rgba(65,210,200,.018),
+    0 0 15px rgba(65,210,200,.012);
+}
+.azure-page-v3 .azure-card-v3{padding:14px 15px}
+.azure-page-v3 .azure-card-v3 h3,
+.azure-page-v3 .azure-skill-v3 h3{margin-bottom:7px}
+.azure-page-v3 .azure-card-v3 ul{margin-top:6px;line-height:1.48}
+.azure-page-v3 .azure-card-v3 p,
+.azure-page-v3 .azure-skill-v3 p{line-height:1.5}
+.azure-page-v3 .azure-skill-v3{padding:14px}
+.azure-page-v3 .azure-skill-top-v3{margin-bottom:7px}
+.azure-page-v3 .azure-callout-v3{margin-top:8px;padding:8px 10px}
+@media(max-width:900px){
+  .azure-page-v3 .azure-hero-v3{grid-template-columns:1fr;min-height:0}
+  .azure-page-v3 .azure-hero-visual-guard-v6{min-height:330px;order:-1}
+  .azure-page-v3 .azure-hero-visual-guard-v6 img{max-height:326px;width:min(100%,390px)}
+  .azure-page-v3 .azure-hero-copy-v3{padding:26px 25px 28px}
+}
+@media(max-width:700px){
+  .azure-page-v3 .azure-shell-v3{padding-top:20px}
+  .azure-page-v3 .azure-hero-copy-v3 h1{font-size:clamp(3.05rem,16vw,4.2rem)}
+  .azure-page-v3 .azure-hero-copy-v3{padding:23px 20px 25px}
+  .azure-page-v3 .azure-hero-visual-guard-v6{min-height:285px}
+  .azure-page-v3 .azure-hero-visual-guard-v6 img{max-height:282px;width:min(100%,335px)}
+}
