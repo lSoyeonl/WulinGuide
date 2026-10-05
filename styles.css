@@ -8466,3 +8466,74 @@ body.profile-page-v1 #profile-login-save-v1:hover{
     radial-gradient(ellipse at 58% 88%, rgba(198,233,227,.05), transparent 14%);
   opacity:.6;
 }
+
+/* Azure Guard subtle hero background v14 */
+.azure-page-v3 .azure-hero-v3{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 76% 44%, rgba(55,190,181,.11), transparent 22%),
+    radial-gradient(circle at 66% 82%, rgba(182,220,214,.035), transparent 16%),
+    radial-gradient(circle at 91% 24%, rgba(216,173,86,.028), transparent 15%),
+    linear-gradient(90deg, rgba(3,18,24,.985) 0%, rgba(4,23,29,.965) 42%, rgba(5,30,36,.90) 67%, rgba(3,18,23,.97) 100%);
+}
+
+/* Едва заметный бамбук/туман только внутри большой hero-карточки */
+.azure-page-v3 .azure-hero-v3::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg, transparent 0 71%, rgba(89,139,111,.045) 71.15% 71.5%, transparent 71.65%),
+    linear-gradient(90deg, transparent 0 79%, rgba(89,139,111,.040) 79.15% 79.45%, transparent 79.6%),
+    linear-gradient(90deg, transparent 0 87%, rgba(89,139,111,.035) 87.10% 87.35%, transparent 87.5%),
+    linear-gradient(155deg, transparent 0 47%, rgba(98,153,119,.035) 47.4% 48.0%, transparent 48.4%) 72% 18% / 150px 110px no-repeat,
+    linear-gradient(25deg, transparent 0 47%, rgba(98,153,119,.030) 47.4% 48.0%, transparent 48.4%) 83% 34% / 150px 110px no-repeat,
+    radial-gradient(ellipse at 70% 78%, rgba(177,215,210,.045), transparent 22%),
+    radial-gradient(ellipse at 84% 72%, rgba(74,214,205,.035), transparent 18%);
+  opacity:.9;
+}
+
+/* Мягкая дымка и немного глубины, без ярких пятен */
+.azure-page-v3 .azure-hero-v3::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg, transparent 0 70%, rgba(182,220,214,.022) 82%, transparent 100%),
+    radial-gradient(circle at 61% 24%, rgba(223,182,93,.028), transparent 12%),
+    radial-gradient(circle at 68% 62%, rgba(84,214,205,.035), transparent 18%),
+    radial-gradient(circle at 93% 43%, rgba(84,214,205,.025), transparent 12%);
+  opacity:.85;
+}
+
+.azure-page-v3 .azure-hero-copy-v3,
+.azure-page-v3 .azure-hero-visual-v3{
+  position:relative;
+  z-index:1;
+}
+
+/* Текстовая часть остаётся максимально чистой */
+.azure-page-v3 .azure-hero-copy-v3{
+  background:
+    linear-gradient(90deg, rgba(2,14,19,.24), rgba(2,14,19,.07) 74%, transparent);
+}
+
+/* Персонаж остаётся главным акцентом */
+.azure-page-v3 .azure-hero-visual-guard-v6{
+  background:
+    radial-gradient(circle at 50% 46%, rgba(58,198,189,.10), transparent 39%),
+    radial-gradient(ellipse at 52% 82%, rgba(181,219,213,.035), transparent 15%),
+    linear-gradient(180deg, transparent, rgba(2,15,20,.055));
+}
+.azure-page-v3 .azure-hero-visual-guard-v6::after{
+  content:none !important;
+}
+@media(max-width:900px){
+  .azure-page-v3 .azure-hero-copy-v3{background:rgba(2,14,19,.10)}
+  .azure-page-v3 .azure-hero-v3::before{opacity:.55}
+}
