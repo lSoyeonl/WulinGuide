@@ -1,0 +1,26 @@
+name: Build site ZIP
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/package-site.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create site archive
+        run: |
+          mkdir -p dist
+          zip -r dist/wulinlife-site-latest.zip .             -x ".git/*" ".github/*" "dist/*"
+      - name: Upload site archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: wulinlife-site-latest
+          path: dist/wulinlife-site-latest.zip
+          if-no-files-found: error
