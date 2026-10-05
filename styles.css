@@ -7621,7 +7621,7 @@ body.profile-page-v1 #profile-login-save-v1:hover{
 .path-icon-azure-v3{
   background-image:
     linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.14)),
-    url("images/azure-guard-card.webp") !important;
+    url("images/azure-guard-card.png") !important;
   background-size:cover !important;
   background-position:center !important;
 }
