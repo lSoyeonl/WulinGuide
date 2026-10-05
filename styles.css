@@ -8744,3 +8744,30 @@ body.profile-page-v1 #profile-login-save-v1:hover{
     background-position:62% center !important;
   }
 }
+
+/* Azure Guard plain dark content cards v19 */
+.azure-page-v3 .azure-card-v3,
+.azure-page-v3 .azure-neigong-left-v4,
+.azure-page-v3 .azure-neigong-effects-v4{
+  background:
+    radial-gradient(circle at 72% 36%, rgba(68,205,195,.05), transparent 22%),
+    linear-gradient(180deg, rgba(5,24,30,.985), rgba(3,15,20,.995) 82%) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.02),
+    inset 0 0 18px rgba(71,210,199,.018),
+    0 0 14px rgba(0,0,0,.10) !important;
+}
+.azure-page-v3 .azure-card-v3::before,
+.azure-page-v3 .azure-card-v3::after,
+.azure-page-v3 .azure-neigong-left-v4::before,
+.azure-page-v3 .azure-neigong-effects-v4::before,
+.azure-page-v3 .azure-neigong-effects-v4::after{
+  background:none !important;
+  opacity:0 !important;
+  box-shadow:none !important;
+}
+.azure-page-v3 .azure-card-v3 h3,
+.azure-page-v3 .azure-neigong-left-v4 h3,
+.azure-page-v3 .azure-neigong-effects-v4 > h3{
+  text-shadow:none;
+}
