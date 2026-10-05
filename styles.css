@@ -8537,3 +8537,210 @@ body.profile-page-v1 #profile-login-save-v1:hover{
   .azure-page-v3 .azure-hero-copy-v3{background:rgba(2,14,19,.10)}
   .azure-page-v3 .azure-hero-v3::before{opacity:.55}
 }
+
+/* Azure Guard REAL hero background v15 */
+.azure-page-v3 .azure-hero-v3{
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(90deg,
+      rgba(2,14,19,.94) 0%,
+      rgba(2,14,19,.88) 38%,
+      rgba(2,14,19,.48) 58%,
+      rgba(2,14,19,.18) 100%),
+    url("assets/azure-hero-bg.webp") center/cover no-repeat !important;
+}
+.azure-page-v3 .azure-hero-v3::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  background:
+    radial-gradient(circle at 76% 48%, rgba(63,205,195,.12), transparent 24%),
+    linear-gradient(180deg, rgba(0,0,0,0), rgba(1,11,15,.12));
+  opacity:1;
+}
+.azure-page-v3 .azure-hero-v3::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  background:
+    linear-gradient(90deg, rgba(219,178,82,.26), transparent 18%, transparent 82%, rgba(219,178,82,.20)) top/100% 1px no-repeat,
+    linear-gradient(90deg, rgba(78,215,205,.10), transparent 35%, transparent 70%, rgba(78,215,205,.08)) bottom/100% 1px no-repeat;
+}
+.azure-page-v3 .azure-hero-copy-v3,
+.azure-page-v3 .azure-hero-visual-v3{
+  position:relative;
+  z-index:1;
+}
+.azure-page-v3 .azure-hero-copy-v3{
+  background:linear-gradient(90deg,rgba(2,13,18,.26),rgba(2,13,18,.06) 76%,transparent) !important;
+}
+.azure-page-v3 .azure-hero-visual-guard-v6{
+  background:radial-gradient(circle at 50% 48%,rgba(56,198,188,.08),transparent 42%) !important;
+}
+.azure-page-v3 .azure-hero-visual-guard-v6::after{content:none !important}
+
+/* Azure Guard scenic image background v16 */
+.azure-page-v3 .azure-hero-v3{
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(90deg,
+      rgba(2,13,18,.965) 0%,
+      rgba(2,13,18,.945) 34%,
+      rgba(2,13,18,.80) 48%,
+      rgba(2,13,18,.50) 62%,
+      rgba(2,13,18,.20) 100%),
+    url("assets/azure-hero-scene.webp") 66% center/cover no-repeat !important;
+}
+.azure-page-v3 .azure-hero-v3::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 78% 44%, rgba(58,198,188,.12), transparent 22%),
+    linear-gradient(90deg, rgba(3,15,20,.16), transparent 28%) left/100% 100% no-repeat,
+    linear-gradient(180deg, rgba(255,255,255,.015), rgba(0,0,0,.06));
+  opacity:1;
+}
+.azure-page-v3 .azure-hero-v3::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg, rgba(220,179,82,.28), transparent 16%, transparent 84%, rgba(220,179,82,.20)) top/100% 1px no-repeat,
+    linear-gradient(90deg, rgba(84,214,205,.10), transparent 35%, transparent 68%, rgba(84,214,205,.08)) bottom/100% 1px no-repeat;
+}
+.azure-page-v3 .azure-hero-copy-v3,
+.azure-page-v3 .azure-hero-visual-v3{
+  position:relative;
+  z-index:1;
+}
+.azure-page-v3 .azure-hero-copy-v3{
+  background:linear-gradient(90deg, rgba(2,13,18,.28), rgba(2,13,18,.10) 72%, transparent) !important;
+}
+.azure-page-v3 .azure-hero-visual-guard-v6{
+  background:
+    radial-gradient(circle at 50% 46%, rgba(56,198,188,.08), transparent 42%) !important;
+}
+.azure-page-v3 .azure-hero-visual-guard-v6::after{
+  content:none !important;
+}
+@media(max-width:900px){
+  .azure-page-v3 .azure-hero-v3{
+    background-position: 62% center !important;
+  }
+}
+
+/* Azure Guard clean image background v17 */
+.azure-page-v3 .azure-hero-v3{
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(90deg,
+      rgba(2,14,18,.985) 0%,
+      rgba(2,14,18,.965) 34%,
+      rgba(2,14,18,.87) 46%,
+      rgba(2,14,18,.56) 60%,
+      rgba(2,14,18,.22) 100%),
+    url("assets/azure-hero-clean-bg.webp") 68% center / cover no-repeat !important;
+}
+.azure-page-v3 .azure-hero-v3::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 76% 46%, rgba(64,205,195,.10), transparent 24%),
+    linear-gradient(180deg, rgba(255,255,255,.015), rgba(0,0,0,.08));
+  opacity:1;
+}
+.azure-page-v3 .azure-hero-v3::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg, rgba(220,179,82,.28), transparent 16%, transparent 84%, rgba(220,179,82,.20)) top/100% 1px no-repeat,
+    linear-gradient(90deg, rgba(84,214,205,.10), transparent 35%, transparent 68%, rgba(84,214,205,.08)) bottom/100% 1px no-repeat;
+}
+.azure-page-v3 .azure-hero-copy-v3,
+.azure-page-v3 .azure-hero-visual-v3{
+  position:relative;
+  z-index:1;
+}
+.azure-page-v3 .azure-hero-copy-v3{
+  background:
+    linear-gradient(90deg, rgba(2,13,18,.38), rgba(2,13,18,.14) 72%, transparent) !important;
+}
+.azure-page-v3 .azure-hero-visual-guard-v6{
+  background:
+    radial-gradient(circle at 50% 48%, rgba(56,198,188,.08), transparent 42%) !important;
+}
+.azure-page-v3 .azure-hero-visual-guard-v6::after{
+  content:none !important;
+}
+@media (max-width: 900px){
+  .azure-page-v3 .azure-hero-v3{
+    background-position: 62% center !important;
+  }
+}
+
+/* Shared school/faction/sect hero standard v18
+   Use .guide-entry-hero-v1 on future school / faction / sect hero blocks.
+   Per-page background image is supplied through --guide-hero-bg.
+*/
+.guide-entry-hero-v1{
+  --guide-hero-bg:url("assets/azure-hero-clean-bg.webp");
+  --guide-hero-accent:rgba(61,205,195,.10);
+  --guide-hero-border:rgba(220,179,82,.28);
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(90deg,
+      rgba(2,14,18,.985) 0%,
+      rgba(2,14,18,.965) 34%,
+      rgba(2,14,18,.87) 46%,
+      rgba(2,14,18,.56) 60%,
+      rgba(2,14,18,.22) 100%),
+    var(--guide-hero-bg) 68% center / cover no-repeat !important;
+}
+.guide-entry-hero-v1::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 76% 46%,var(--guide-hero-accent),transparent 24%),
+    linear-gradient(180deg,rgba(255,255,255,.015),rgba(0,0,0,.08));
+}
+.guide-entry-hero-v1::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,var(--guide-hero-border),transparent 16%,transparent 84%,rgba(220,179,82,.20)) top/100% 1px no-repeat,
+    linear-gradient(90deg,rgba(84,214,205,.10),transparent 35%,transparent 68%,rgba(84,214,205,.08)) bottom/100% 1px no-repeat;
+}
+.guide-entry-hero-v1 > *{
+  position:relative;
+  z-index:1;
+}
+@media(max-width:900px){
+  .guide-entry-hero-v1{
+    background-position:62% center !important;
+  }
+}
