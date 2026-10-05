@@ -7268,3 +7268,116 @@ body.profile-page-v1 #profile-login-save-v1:hover{
   border-color:rgba(216,173,86,.5);
   background:rgba(216,173,86,.1);
 }
+
+
+/* Schools / factions / sects directory v1 */
+.paths-shell-v1{
+  width:min(1180px,calc(100% - 40px));
+  margin:0 auto;
+  padding:36px 0 64px;
+  position:relative;
+  z-index:2;
+}
+.paths-hero-v1{
+  padding:44px 48px;
+  border:1px solid rgba(216,173,86,.22);
+  background:
+    radial-gradient(circle at 82% 30%,rgba(216,173,86,.08),transparent 26%),
+    linear-gradient(135deg,rgba(4,21,27,.97),rgba(2,16,21,.99));
+}
+.paths-hero-v1 h1{
+  margin:8px 0 12px;
+  color:#f2eee7;
+  font-size:clamp(2.6rem,5vw,4.8rem);
+  line-height:.96;
+}
+.paths-hero-v1 p{
+  max-width:760px;
+  margin:0;
+  color:#9db0b2;
+  line-height:1.6;
+}
+.paths-tabs-v1{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin:20px 0 40px;
+}
+.paths-tabs-v1 a{
+  padding:9px 16px;
+  border:1px solid rgba(216,173,86,.2);
+  color:#d8bd7b;
+  background:rgba(5,22,29,.72);
+  text-decoration:none;
+}
+.paths-tabs-v1 a:hover{
+  border-color:rgba(216,173,86,.45);
+  background:rgba(216,173,86,.06);
+}
+.paths-section-v1{
+  scroll-margin-top:90px;
+  margin-bottom:52px;
+}
+.paths-section-head-v1{
+  margin-bottom:16px;
+  padding-bottom:12px;
+  border-bottom:1px solid rgba(216,173,86,.14);
+}
+.paths-section-head-v1 h2{
+  margin:5px 0 4px;
+  color:#efd89b;
+  font-size:2rem;
+}
+.paths-section-head-v1 p{
+  margin:0;
+  color:#81999b;
+}
+.paths-grid-v1{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:14px;
+}
+.path-card-v1{
+  padding:12px;
+  border:1px solid rgba(216,173,86,.16);
+  background:linear-gradient(145deg,rgba(7,27,35,.95),rgba(3,17,23,.99));
+  min-width:0;
+}
+.path-card-v1:hover{
+  border-color:rgba(216,173,86,.34);
+  transform:translateY(-2px);
+}
+.path-icon-v1{
+  width:100%;
+  aspect-ratio:1;
+  background-image:url("images/schools-sprite.webp");
+  background-size:600% 600%;
+  background-position:calc(var(--sx) * 20%) calc(var(--sy) * 20%);
+  background-repeat:no-repeat;
+  border:1px solid rgba(216,173,86,.14);
+}
+.path-card-copy-v1{
+  padding:12px 4px 3px;
+}
+.path-card-copy-v1 small{
+  display:block;
+  color:#c99d4e;
+  font-size:.65rem;
+  letter-spacing:.12em;
+  font-weight:700;
+}
+.path-card-copy-v1 h3{
+  margin:5px 0 0;
+  color:#ead49b;
+  font-size:1.05rem;
+  line-height:1.2;
+}
+@media(max-width:900px){
+  .paths-grid-v1{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:560px){
+  .paths-shell-v1{width:min(100% - 24px,1180px);padding-top:24px}
+  .paths-hero-v1{padding:28px 22px}
+  .paths-grid-v1{grid-template-columns:1fr}
+  .paths-tabs-v1{flex-wrap:wrap}
+}
