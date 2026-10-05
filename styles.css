@@ -8771,3 +8771,19 @@ body.profile-page-v1 #profile-login-save-v1:hover{
 .azure-page-v3 .azure-neigong-effects-v4 > h3{
   text-shadow:none;
 }
+
+/* Highlight quoted game terms v20 */
+.azure-page-v3 .game-term-v20{
+  color:#79d7cf;
+  font-weight:700;
+  text-shadow:0 0 10px rgba(121,215,207,.10);
+}
+.azure-page-v3 strong .game-term-v20{
+  color:#86e0d7;
+}
+.azure-page-v3 .tag .game-term-v20,
+.azure-page-v3 h2 .game-term-v20,
+.azure-page-v3 h3 .game-term-v20{
+  color:#e4c36f;
+  text-shadow:0 0 10px rgba(228,195,111,.08);
+}
