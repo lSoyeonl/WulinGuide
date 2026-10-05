@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Личный кабинет — Руководство 9 Инь</title>
   <link rel="icon" type="image/png" href="images/favicon.png">
-  <link rel="stylesheet" href="styles.css?v=20261005-0932">
+  <link rel="stylesheet" href="styles.css?v=20261005-0940">
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script defer src="supabase-config.js"></script>
-  <script defer src="auth.js?v=20261004-2255"></script>
+  <script defer src="auth.js?v=20261005-0940"></script>
 </head>
 <body class="wuxia-site-v5 wuxia-site-v6 wuxia-site-v34 wuxia-site-v39 wuxia-site-v40 wuxia-site-v41 wuxia-site-v42 wuxia-site-v43 wuxia-site-v44 wuxia-site-v45 profile-page-v1">
   <div class="mist-layer-v26" aria-hidden="true"></div>
@@ -44,7 +44,13 @@
 
         <div class="profile-right-v2">
           <div class="profile-info-grid-v1 profile-info-grid-v2">
-            <div class="profile-field-v1 profile-field-wide-v2"><span>Имя пользователя</span><strong id="profile-login-v1">—</strong></div>
+            <div class="profile-field-v1 profile-field-wide-v2 profile-username-edit-v1">
+              <span>Имя пользователя</span>
+              <div class="profile-server-row-v2">
+                <input id="profile-login-input-v1" type="text" minlength="3" maxlength="32" pattern="[A-Za-zА-Яа-яЁё0-9_.-]+" autocomplete="username" aria-label="Имя пользователя">
+                <button id="profile-login-save-v1" type="button">Сохранить</button>
+              </div>
+            </div>
             <div class="profile-field-v1 profile-field-wide-v2"><span>Электронная почта</span><strong id="profile-email-v1">—</strong></div>
             <div class="profile-field-v1 profile-server-edit-v2">
               <span>Сервер</span>
@@ -96,6 +102,8 @@
       const about = document.getElementById('profile-about-v2');
       const aboutCount = document.getElementById('profile-about-count-v2');
       const aboutSave = document.getElementById('profile-about-save-v2');
+      const usernameInput = document.getElementById('profile-login-input-v1');
+      const usernameSave = document.getElementById('profile-login-save-v1');
       const serverSelect = document.getElementById('profile-server-select-v2');
       const serverSave = document.getElementById('profile-server-save-v2');
       const updateAboutCount = () => {
@@ -106,7 +114,7 @@
         if (!session?.user) return;
         const profile = await auth.getProfile(session.user.id);
         const username = profile.username || 'Профиль';
-        document.getElementById('profile-login-v1').textContent = username;
+        usernameInput.value = username;
         document.getElementById('profile-email-v1').textContent = session.user.email || '—';
         serverSelect.value = profile.server || 'taiwan';
         avatar.src = auth.getAvatarUrl(profile);
@@ -137,6 +145,22 @@
           message.textContent = String(err?.message || 'Не удалось восстановить аватар.');
         }
       });
+      usernameSave.addEventListener('click', async () => {
+        usernameSave.disabled = true;
+        usernameSave.textContent = 'Сохраняем…';
+        message.textContent = '';
+        try {
+          const saved = await auth.saveUsername(usernameInput.value);
+          usernameInput.value = saved;
+          message.textContent = 'Имя пользователя сохранено.';
+        } catch (err) {
+          message.textContent = String(err?.message || 'Не удалось сохранить имя пользователя.');
+        } finally {
+          usernameSave.disabled = false;
+          usernameSave.textContent = 'Сохранить';
+        }
+      });
+
       serverSave.addEventListener('click', async () => {
         serverSave.disabled = true;
         serverSave.textContent = 'Сохраняем…';
