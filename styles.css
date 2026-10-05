@@ -7526,3 +7526,92 @@ body.profile-page-v1 #profile-login-save-v1:hover{
     min-height:88px;
   }
 }
+
+
+/* Azure Guard placeholder page v1 */
+.path-card-link-v2{
+  display:block;
+  text-decoration:none;
+  color:inherit;
+}
+.path-icon-azure-v2{
+  background-image:
+    linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.18)),
+    url("images/azure-guard.webp") !important;
+  background-size:cover !important;
+  background-position:center !important;
+}
+.path-open-v2{
+  display:inline-block;
+  margin-top:9px;
+  color:#d7ae58;
+  font-size:.76rem;
+  font-weight:700;
+}
+.azure-shell-v2{
+  width:min(1180px,calc(100% - 40px));
+  margin:0 auto;
+  padding:36px 0 70px;
+  position:relative;
+  z-index:2;
+}
+.azure-back-v2{
+  display:inline-flex;
+  margin-bottom:16px;
+  padding:9px 14px;
+  border:1px solid rgba(216,173,86,.22);
+  color:#d8bd7b;
+  text-decoration:none;
+  background:rgba(5,22,29,.72);
+}
+.azure-placeholder-v2{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 420px;
+  min-height:500px;
+  border:1px solid rgba(216,173,86,.22);
+  background:
+    radial-gradient(circle at 18% 20%,rgba(49,139,151,.08),transparent 28%),
+    linear-gradient(145deg,rgba(5,24,31,.98),rgba(2,16,21,.99));
+  overflow:hidden;
+}
+.azure-placeholder-copy-v2{
+  padding:54px 50px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.azure-placeholder-copy-v2 h1{
+  margin:8px 0 16px;
+  color:#f0eee8;
+  font-size:clamp(3rem,6vw,5.6rem);
+  line-height:.9;
+  letter-spacing:-.04em;
+}
+.azure-placeholder-copy-v2 h1 span{color:#d9b45f}
+.azure-placeholder-copy-v2 p{
+  max-width:650px;
+  color:#9eb2b4;
+  font-size:1rem;
+  line-height:1.65;
+}
+.azure-coming-v2{
+  margin-top:24px;
+  width:max-content;
+  padding:9px 13px;
+  border:1px solid rgba(216,173,86,.22);
+  color:#d7b86d;
+  font-size:.75rem;
+  font-weight:700;
+  letter-spacing:.08em;
+}
+.azure-art-v2{
+  min-height:500px;
+  background:
+    linear-gradient(90deg,rgba(3,17,22,.38),rgba(3,17,22,.04)),
+    url("images/azure-guard.webp") center/cover no-repeat;
+}
+@media(max-width:850px){
+  .azure-placeholder-v2{grid-template-columns:1fr}
+  .azure-art-v2{min-height:360px;order:-1}
+  .azure-placeholder-copy-v2{padding:32px 24px}
+}
