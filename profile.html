@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Личный кабинет — Руководство 9 Инь</title>
   <link rel="icon" type="image/png" href="images/favicon.png">
-  <link rel="stylesheet" href="styles.css?v=20261005-0943">
+  <link rel="stylesheet" href="styles.css?v=20261005-0948">
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script defer src="supabase-config.js"></script>
   <script defer src="auth.js?v=20261005-0940"></script>
@@ -91,6 +91,39 @@
     </section>
   </main>
   <footer class="site-footer-v44"><div class="footer-inner-v44"><span class="footer-title-v46">Руководство 9 Инь 2026</span></div></footer>
+  <script id="profile-falling-effects-v1">
+    document.addEventListener('DOMContentLoaded', () => {
+      const ashLayer = document.querySelector('.ash-layer-v26');
+      const emberLayer = document.querySelector('.ember-layer-v26');
+      if (!ashLayer || !emberLayer || ashLayer.children.length || emberLayer.children.length) return;
+
+      const rnd = (min, max) => Math.random() * (max - min) + min;
+
+      for (let i = 0; i < 26; i++) {
+        const p = document.createElement('i');
+        p.className = 'ash-particle-v26';
+        p.style.left = `${rnd(0, 100)}%`;
+        p.style.setProperty('--size', `${rnd(2.5, 5.5)}px`);
+        p.style.setProperty('--drift', `${rnd(-110, 110)}px`);
+        p.style.setProperty('--duration', `${rnd(16, 28)}s`);
+        p.style.setProperty('--delay', `${rnd(-30, 0)}s`);
+        p.style.setProperty('--opacity', rnd(.16, .34).toFixed(2));
+        ashLayer.appendChild(p);
+      }
+
+      for (let i = 0; i < 7; i++) {
+        const e = document.createElement('i');
+        e.className = 'ember-particle-v26';
+        e.style.left = `${rnd(4, 96)}%`;
+        e.style.setProperty('--size', `${rnd(2.2, 4.4)}px`);
+        e.style.setProperty('--drift', `${rnd(-70, 70)}px`);
+        e.style.setProperty('--duration', `${rnd(14, 24)}s`);
+        e.style.setProperty('--delay', `${rnd(-24, 0)}s`);
+        emberLayer.appendChild(e);
+      }
+    });
+  </script>
+
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
       const auth = window.WulinGuideAuth;
