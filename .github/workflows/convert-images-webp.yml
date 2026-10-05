@@ -1,0 +1,106 @@
+name: Convert images to WebP
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/convert-images-webp.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Pillow
+        run: python -m pip install --upgrade pillow
+
+      - name: Convert raster images to WebP and update references
+        shell: bash
+        run: |
+          cat > /tmp/convert_webp.py <<'PY'
+          from pathlib import Path
+          from PIL import Image, ImageSequence
+          import re
+
+          root = Path(".")
+          raster_exts = {".png", ".jpg", ".jpeg", ".bmp", ".tif", ".tiff"}
+          skip_dirs = {".git", ".github"}
+          mapping = {}
+
+          for src in list(root.rglob("*")):
+              if not src.is_file() or any(p in skip_dirs for p in src.parts):
+                  continue
+              if src.suffix.lower() not in raster_exts:
+                  continue
+              dst = src.with_suffix(".webp")
+              try:
+                  with Image.open(src) as im:
+                      if getattr(im, "is_animated", False):
+                          frames = []
+                          durations = []
+                          for frame in ImageSequence.Iterator(im):
+                              fr = frame.convert("RGBA")
+                              frames.append(fr)
+                              durations.append(frame.info.get("duration", im.info.get("duration", 100)))
+                          frames[0].save(
+                              dst, "WEBP", save_all=True, append_images=frames[1:],
+                              duration=durations, loop=im.info.get("loop", 0),
+                              quality=84, method=6
+                          )
+                      else:
+                          if im.mode not in ("RGB", "RGBA"):
+                              im = im.convert("RGBA" if "A" in im.getbands() else "RGB")
+                          im.save(dst, "WEBP", quality=84, method=6)
+                  mapping[src.as_posix()] = dst.as_posix()
+              except Exception as e:
+                  print(f"SKIP {src}: {e}")
+
+          text_exts = {".html",".css",".js",".json",".xml",".md",".txt",".webmanifest"}
+          for f in root.rglob("*"):
+              if not f.is_file() or any(p in skip_dirs for p in f.parts) or f.suffix.lower() not in text_exts:
+                  continue
+              try:
+                  s = f.read_text(encoding="utf-8")
+              except Exception:
+                  continue
+              old = s
+              for src, dst in mapping.items():
+                  variants = {
+                      src: dst,
+                      "./"+src: "./"+dst,
+                      "/"+src: "/"+dst,
+                      src.replace("/", "\\"): dst.replace("/", "\\"),
+                  }
+                  for a,b in variants.items():
+                      s = s.replace(a,b)
+              # Fix common favicon MIME type when its source became webp.
+              s = re.sub(r'type=["\']image/png["\'](?=[^>]*href=["\'][^"\']+\.webp)', 'type="image/webp"', s, flags=re.I)
+              if s != old:
+                  f.write_text(s, encoding="utf-8")
+
+          for src in mapping:
+              Path(src).unlink(missing_ok=True)
+
+          print(f"Converted {len(mapping)} raster images to WebP")
+          PY
+          python /tmp/convert_webp.py
+
+      - name: Commit optimized images
+        run: |
+          git config user.name "wulinlife-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No raster images needed conversion."
+            exit 0
+          fi
+          git commit -m "Optimize site images to WebP [skip ci]"
+          git push
