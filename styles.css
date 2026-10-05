@@ -8307,3 +8307,73 @@ body.profile-page-v1 #profile-login-save-v1:hover{
     opacity:.34;
   }
 }
+
+/* Azure Guard hero atmosphere v11 */
+.azure-page-v3 .azure-hero-v3{
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 73% 44%, rgba(66,210,199,.15), transparent 20%),
+    radial-gradient(circle at 82% 67%, rgba(223,182,93,.04), transparent 24%),
+    linear-gradient(90deg, rgba(4,20,26,.96) 0%, rgba(4,20,26,.90) 42%, rgba(4,20,26,.64) 58%, rgba(4,20,26,.36) 100%),
+    linear-gradient(135deg, rgba(5,31,38,.98), rgba(2,16,21,.995));
+}
+.azure-page-v3 .azure-hero-v3::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  background:
+    radial-gradient(ellipse at 66% 54%, rgba(88,216,207,.10), transparent 28%),
+    radial-gradient(ellipse at 62% 88%, rgba(188,231,225,.06), transparent 16%),
+    linear-gradient(180deg, transparent 72%, rgba(84,214,205,.055) 84%, transparent 100%),
+    radial-gradient(circle at 88% 28%, rgba(91,220,211,.07), transparent 12%),
+    radial-gradient(circle at 90% 72%, rgba(91,220,211,.06), transparent 10%),
+    radial-gradient(circle at 56% 24%, rgba(223,182,93,.05), transparent 18%);
+  opacity:1;
+}
+.azure-page-v3 .azure-hero-v3::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  background:
+    radial-gradient(circle at 59% 20%, rgba(255,255,255,.04), transparent 2px),
+    radial-gradient(circle at 67% 64%, rgba(223,182,93,.10), transparent 2.6px),
+    radial-gradient(circle at 81% 38%, rgba(84,214,205,.10), transparent 2.4px),
+    radial-gradient(circle at 88% 58%, rgba(223,182,93,.08), transparent 2.2px),
+    radial-gradient(circle at 75% 80%, rgba(84,214,205,.08), transparent 2px);
+  opacity:.9;
+}
+.azure-page-v3 .azure-hero-copy-v3,
+.azure-page-v3 .azure-hero-visual-v3{
+  position:relative;
+  z-index:1;
+}
+.azure-page-v3 .azure-hero-copy-v3{
+  background:
+    linear-gradient(90deg, rgba(3,17,22,.16), rgba(3,17,22,0));
+}
+.azure-page-v3 .azure-hero-visual-guard-v6{
+  background:
+    radial-gradient(circle at 50% 48%, rgba(60,207,198,.16), transparent 43%),
+    radial-gradient(circle at 50% 78%, rgba(205,235,228,.06), transparent 18%),
+    linear-gradient(180deg, rgba(5,34,40,.02), rgba(2,15,20,.20));
+}
+.azure-page-v3 .azure-hero-visual-guard-v6::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg, transparent 0 78%, rgba(202,233,228,.08) 86%, transparent 100%),
+    radial-gradient(ellipse at 58% 88%, rgba(198,233,227,.11), transparent 20%),
+    radial-gradient(ellipse at 64% 91%, rgba(84,214,205,.08), transparent 24%);
+  opacity:.9;
+}
+@media(max-width:900px){
+  .azure-page-v3 .azure-hero-copy-v3{
+    background:none;
+  }
+}
