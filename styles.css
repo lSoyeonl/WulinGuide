@@ -7808,15 +7808,6 @@ body.profile-page-v1 #profile-login-save-v1:hover{
 .azure-neigong-left-v4{
   text-align:left;
 }
-.azure-neigong-icon-v4{
-  display:block;
-  width:96px;
-  height:96px;
-  margin:0 0 20px;
-  object-fit:cover;
-  border:1px solid rgba(230,183,93,.68);
-  box-shadow:0 0 24px rgba(91,205,199,.16);
-}
 .azure-neigong-left-v4 h3,
 .azure-neigong-effects-v4 > h3{
   margin:0 0 16px;
@@ -7921,4 +7912,24 @@ body.profile-page-v1 #profile-login-save-v1:hover{
 @media (max-width:980px){
   .azure-neigong-frame-v5{padding:12px}
   .azure-neigong-frame-v5 .azure-neigong-columns-v4{grid-template-columns:1fr}
+}
+
+
+/* Azure Guard neigong image frame fit */
+.azure-neigong-icon-wrap-v4{
+  width:128px;
+  height:128px;
+  margin:0 0 20px;
+  border:1px solid rgba(230,183,93,.68);
+  background:#12061d;
+  overflow:hidden;
+  box-shadow:0 0 24px rgba(91,205,199,.16);
+}
+.azure-neigong-icon-v4{
+  display:block;
+  width:100%;
+  height:100%;
+  margin:0;
+  object-fit:cover;
+  object-position:center;
 }
