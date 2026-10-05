@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Лазурная Стража — фракция мира 9 Инь.">
+  <title>Лазурная Стража — Руководство 9 Инь</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="stylesheet" href="styles.css?v=20261005-1101">
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="supabase-config.js"></script>
+  <script defer src="auth.js?v=20261005-1101"></script>
+</head>
+<body class="wuxia-site-v5 wuxia-site-v6 wuxia-site-v34 wuxia-site-v39 wuxia-site-v40 wuxia-site-v41 wuxia-site-v42 wuxia-site-v43 wuxia-site-v44 wuxia-site-v45 azure-page-v2">
+  <div class="mist-layer-v26" aria-hidden="true"></div>
+  <div class="ash-layer-v26" aria-hidden="true"></div>
+  <div class="ember-layer-v26" aria-hidden="true"></div>
+
+  <header class="header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="Руководство 9 Инь">
+        <span class="round-brand-icon v40-brand-image" aria-hidden="true"><img src="images/brand-scroll-icon.png" alt=""></span>
+        <span class="brand-copy"><strong>Руководство 9 Инь</strong><small>БАЗА ЗНАНИЙ</small></span>
+      </a>
+      <nav>
+        <a href="index.html">Главная</a>
+        <a href="schools.html">Школы, Фракции, Секты</a>
+        <a href="taiwan.html">Тайвань</a>
+        <a href="pirate.html">Пиратка</a>
+        <a href="profile.html" data-account-link>Личный кабинет</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="azure-shell-v2">
+    <a class="azure-back-v2" href="schools.html#factions">← Вернуться к фракциям</a>
+
+    <section class="azure-placeholder-v2 reveal">
+      <div class="azure-placeholder-copy-v2">
+        <span class="tag">ФРАКЦИЯ</span>
+        <h1>Лазурная <span>Стража</span></h1>
+        <p>Отдельная страница фракции создана. Информацию о вступлении, Нейгунах, навыках, требованиях и особенностях развития мы добавим дальше.</p>
+        <span class="azure-coming-v2">РАЗДЕЛ В РАЗРАБОТКЕ</span>
+      </div>
+      <div class="azure-art-v2" role="img" aria-label="Лазурная Стража"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer-v44"><div class="footer-inner-v44"><span class="footer-title-v46">Руководство 9 Инь 2026</span></div></footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const ash=document.querySelector('.ash-layer-v26'), ember=document.querySelector('.ember-layer-v26');
+      const rnd=(a,b)=>Math.random()*(b-a)+a;
+      if(ash&&!ash.children.length) for(let i=0;i<26;i++){const p=document.createElement('i');p.className='ash-particle-v26';p.style.left=rnd(0,100)+'%';p.style.setProperty('--size',rnd(2.5,5.5)+'px');p.style.setProperty('--drift',rnd(-110,110)+'px');p.style.setProperty('--duration',rnd(16,28)+'s');p.style.setProperty('--delay',rnd(-30,0)+'s');p.style.setProperty('--opacity',rnd(.16,.34).toFixed(2));ash.appendChild(p);}
+      if(ember&&!ember.children.length) for(let i=0;i<7;i++){const e=document.createElement('i');e.className='ember-particle-v26';e.style.left=rnd(4,96)+'%';e.style.setProperty('--size',rnd(2.2,4.4)+'px');e.style.setProperty('--drift',rnd(-70,70)+'px');e.style.setProperty('--duration',rnd(14,24)+'s');e.style.setProperty('--delay',rnd(-24,0)+'s');ember.appendChild(e);}
+      const el=document.querySelector('.reveal');
+      if(el) requestAnimationFrame(()=>el.classList.add('is-visible'));
+    });
+  </script>
+</body>
+</html>
