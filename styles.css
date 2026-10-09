@@ -8875,6 +8875,11 @@ body.profile-page-v1 #profile-login-save-v1:hover{
   }
 }
 
-/* Crisp unified panoramic header (all guide sections) */
-.guide-unified-v1 .section-hero-unified { background: linear-gradient(90deg,rgba(2,16,22,.30),rgba(2,16,22,.22) 45%,rgba(2,16,22,.10)), url("images/unified-guide-hero-sharp.webp") center / cover no-repeat !important; }
+/* Unified clean panoramic banner: no baked-in lettering, strong contrast for live HTML text */
+.guide-unified-v1 .section-hero-unified {
+  background-image: linear-gradient(90deg,rgba(1,9,14,.84) 0%,rgba(1,10,15,.72) 46%,rgba(1,11,16,.49) 100%), url("images/unified-guide-hero-sharp.webp") !important;
+  background-position:center center !important;
+  background-size:cover !important;
+  background-repeat:no-repeat !important;
+}
 
