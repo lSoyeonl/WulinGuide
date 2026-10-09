@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Мировые, школьные и сектанские меридианы в Руководстве 9 Инь.">
+  <title>Меридианы — Руководство 9 Инь</title>
+  <link rel="icon" type="image/webp" href="images/favicon.webp">
+  <link rel="stylesheet" href="styles.css?v=20261005-1249">
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="supabase-config.js"></script>
+  <script defer src="auth.js?v=20261005-1101"></script>
+</head>
+<body class="wuxia-site-v5 wuxia-site-v6 wuxia-site-v34 wuxia-site-v39 wuxia-site-v40 wuxia-site-v41 wuxia-site-v42 wuxia-site-v43 wuxia-site-v44 wuxia-site-v45 paths-page-v1">
+  <div class="mist-layer-v26" aria-hidden="true"></div>
+  <div class="ash-layer-v26" aria-hidden="true"></div>
+  <div class="ember-layer-v26" aria-hidden="true"></div>
+  <header class="header"><div class="header-inner"><a class="brand" href="index.html" aria-label="Руководство 9 Инь"><span class="round-brand-icon v40-brand-image" aria-hidden="true"><img src="images/brand-scroll-icon.webp" alt=""></span><span class="brand-copy"><strong>Руководство 9 Инь</strong><small>БАЗА ЗНАНИЙ</small></span></a><nav><a href="index.html">Главная</a><a href="taiwan.html">Тайвань</a><a href="pirate.html">Пиратка</a><a href="profile.html" data-account-link>Личный кабинет</a></nav></div></header>
+  <main class="paths-shell-v1">
+    <section class="paths-hero-v1 reveal"><span class="tag">РАЗВИТИЕ ПЕРСОНАЖА</span><h1>Меридианы</h1><p>Выберите направление меридианов: мировые, школьные или сектанские.</p></section>
+    <nav class="paths-tabs-v1 reveal" aria-label="Категории меридианов">
+      <a href="#world" class="paths-tab-card-v2"><span class="paths-tab-icon-v2" aria-hidden="true">М</span><span class="paths-tab-copy-v2"><small>РАЗДЕЛ МЕРИДИАНОВ</small><strong>Мировые</strong><em>Общие меридианы игрового мира</em></span><span class="paths-tab-arrow-v2" aria-hidden="true">→</span></a>
+      <a href="#school" class="paths-tab-card-v2"><span class="paths-tab-icon-v2" aria-hidden="true">Ш</span><span class="paths-tab-copy-v2"><small>РАЗДЕЛ МЕРИДИАНОВ</small><strong>Школьные</strong><em>Меридианы, связанные со школами</em></span><span class="paths-tab-arrow-v2" aria-hidden="true">→</span></a>
+      <a href="#sect" class="paths-tab-card-v2"><span class="paths-tab-icon-v2" aria-hidden="true">С</span><span class="paths-tab-copy-v2"><small>РАЗДЕЛ МЕРИДИАНОВ</small><strong>Сектанские</strong><em>Меридианы, связанные с сектами</em></span><span class="paths-tab-arrow-v2" aria-hidden="true">→</span></a>
+    </nav>
+    <section class="paths-section-v1" id="world">
+      <header class="paths-section-head-v1 reveal"><span class="tag">МЕРИДИАНЫ</span><h2>Мировые меридианы</h2><p>Общие меридианы игрового мира. Материалы этого раздела будут добавляться постепенно.</p></header>
+      <div class="paths-grid-v1"><article class="path-card-v1 reveal-card"><div class="path-card-copy-v1"><small>СКОРО</small><h3>Материалы в подготовке</h3></div></article></div>
+    </section>
+
+    <section class="paths-section-v1" id="school">
+      <header class="paths-section-head-v1 reveal"><span class="tag">МЕРИДИАНЫ</span><h2>Школьные меридианы</h2><p>Меридианы, связанные со школами. Материалы этого раздела будут добавляться постепенно.</p></header>
+      <div class="paths-grid-v1"><article class="path-card-v1 reveal-card"><div class="path-card-copy-v1"><small>СКОРО</small><h3>Материалы в подготовке</h3></div></article></div>
+    </section>
+
+    <section class="paths-section-v1" id="sect">
+      <header class="paths-section-head-v1 reveal"><span class="tag">МЕРИДИАНЫ</span><h2>Сектанские меридианы</h2><p>Меридианы, связанные с сектами. Материалы этого раздела будут добавляться постепенно.</p></header>
+      <div class="paths-grid-v1"><article class="path-card-v1 reveal-card"><div class="path-card-copy-v1"><small>СКОРО</small><h3>Материалы в подготовке</h3></div></article></div>
+    </section>
+  </main>
+  <footer class="site-footer-v44"><div class="footer-inner-v44"><span class="footer-title-v46">Руководство 9 Инь 2026</span></div></footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const els=document.querySelectorAll('.reveal,.reveal-card');
+      if (!('IntersectionObserver' in window)) { els.forEach(el=>el.classList.add('is-visible')); return; }
+      const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target)}}),{threshold:.08});
+      els.forEach((el,i)=>{if(el.classList.contains('reveal-card'))el.style.setProperty('--reveal-delay',(i%4)*60+'ms');observer.observe(el)});
+    });
+  </script>
+</body>
+</html>
