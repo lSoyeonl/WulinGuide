@@ -8787,3 +8787,44 @@ body.profile-page-v1 #profile-login-save-v1:hover{
   color:#e4c36f;
   text-shadow:0 0 10px rgba(228,195,111,.08);
 }
+
+
+/* Unified guide/catalog atmosphere — same visual language as Azure Guard skills */
+.guide-unified-v1 .section-hero-unified{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  border:1px solid rgba(216,173,86,.38) !important;
+  background:
+    radial-gradient(ellipse at 82% 22%,rgba(53,160,167,.13),transparent 42%),
+    radial-gradient(ellipse at 12% 85%,rgba(204,154,75,.06),transparent 44%),
+    linear-gradient(145deg,rgba(7,28,34,.98),rgba(3,15,20,.995) 78%) !important;
+  box-shadow:inset 0 0 0 1px rgba(216,173,86,.06),0 12px 36px rgba(0,0,0,.2);
+}
+.guide-unified-v1 .section-hero-unified::after{
+  content:"";position:absolute;inset:8px;z-index:0;pointer-events:none;
+  border:1px solid rgba(216,173,86,.09);
+}
+.guide-unified-v1 .section-hero-unified > *{position:relative;z-index:1}
+.guide-unified-v1 .section-card-unified{
+  position:relative;isolation:isolate;overflow:hidden;
+  border:1px solid rgba(216,173,86,.30) !important;
+  background:radial-gradient(circle at 86% 18%,rgba(66,210,199,.08),transparent 22%),linear-gradient(145deg,rgba(7,28,34,.98),rgba(3,15,20,.995) 78%) !important;
+  box-shadow:inset 0 0 0 1px rgba(216,173,86,.045),0 8px 22px rgba(0,0,0,.16);
+  transition:border-color .28s ease,box-shadow .28s ease,transform .28s ease;
+}
+.guide-unified-v1 .section-card-unified:hover,
+.guide-unified-v1 .section-card-unified:focus-visible{
+  border-color:rgba(239,200,117,.65) !important;
+  box-shadow:0 0 22px rgba(216,173,86,.09),0 12px 25px rgba(0,0,0,.23);
+  transform:translateY(-2px);
+}
+.guide-unified-v1 .section-card-unified::after{
+  content:"";position:absolute;left:12px;right:12px;bottom:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(216,173,86,.30),transparent);
+  pointer-events:none;
+}
+@media(prefers-reduced-motion:reduce){
+  .guide-unified-v1 .section-card-unified{transition:none!important}
+  .guide-unified-v1 .section-card-unified:hover{transform:none}
+}
