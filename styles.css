@@ -8834,5 +8834,5 @@ body.profile-page-v1 #profile-login-save-v1:hover{
 .guide-unified-v1 .section-hero-unified{
   background:
     linear-gradient(90deg,rgba(2,16,22,.69) 0%,rgba(2,16,22,.48) 45%,rgba(2,16,22,.30) 100%),
-    url("images/unified-guide-hero.svg") center center / cover no-repeat !important;
+    url("images/unified-guide-hero.svg?v=2") center center / cover no-repeat !important;
 }
