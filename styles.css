@@ -8833,7 +8833,7 @@ body.profile-page-v1 #profile-login-save-v1:hover{
 /* Shared dark panoramic hero background, approved for main guide categories */
 .guide-unified-v1 .section-hero-unified{
   background:
-    linear-gradient(90deg,rgba(2,16,22,.69) 0%,rgba(2,16,22,.48) 45%,rgba(2,16,22,.30) 100%),
+    linear-gradient(90deg,rgba(2,16,22,.43) 0%,rgba(2,16,22,.35) 45%,rgba(2,16,22,.18) 100%),
     url("images/unified-guide-hero.svg?v=2") center center / cover no-repeat !important;
 }
 
