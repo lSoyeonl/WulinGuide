@@ -674,5 +674,29 @@
       els.forEach((el,i)=>{if(el.classList.contains('reveal-card'))el.style.setProperty('--reveal-delay',(i%4)*60+'ms');observer.observe(el)});
     });
   </script>
+  <script>
+    // Reveal/collapse all meridian cards in the same visible grid row together.
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('#school .paths-grid-v1, #sect .paths-grid-v1, #world .paths-grid-v1').forEach(grid => {
+        const cards = [...grid.querySelectorAll(':scope > article.path-card-v1')];
+        let syncing = false;
+        cards.forEach(card => {
+          const details = card.querySelector('details');
+          if (!details) return;
+          details.addEventListener('toggle', () => {
+            if (syncing) return;
+            syncing = true;
+            const rowY = card.getBoundingClientRect().top;
+            cards.forEach(peer => {
+              if (Math.abs(peer.getBoundingClientRect().top - rowY) > 3) return;
+              const other = peer.querySelector('details');
+              if (other && other !== details && other.open !== details.open) other.open = details.open;
+            });
+            queueMicrotask(() => { syncing = false; });
+          });
+        });
+      });
+    });
+  </script>
 </body>
 </html>
