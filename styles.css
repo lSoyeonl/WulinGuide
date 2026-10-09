@@ -8836,3 +8836,41 @@ body.profile-page-v1 #profile-login-save-v1:hover{
     linear-gradient(90deg,rgba(2,16,22,.69) 0%,rgba(2,16,22,.48) 45%,rgba(2,16,22,.30) 100%),
     url("images/unified-guide-hero.svg?v=2") center center / cover no-repeat !important;
 }
+
+
+/* Hero frame parity: the Schools/Factions/Sects header is the reference. */
+.guide-unified-v1 .section-hero-unified{
+  box-shadow:none !important;
+  border:1px solid rgba(216,173,86,.34) !important;
+}
+.guide-unified-v1 .section-hero-unified::before{
+  content:"" !important;
+  position:absolute !important;
+  inset:8px !important;
+  border:1px solid rgba(216,173,86,.10) !important;
+  background:none !important;
+  pointer-events:none !important;
+  z-index:1 !important;
+  display:block !important;
+}
+.guide-unified-v1 .section-hero-unified::after{content:none !important;display:none !important}
+.guide-unified-v1.wuxia-site-v62 .subpage-hero-v62.section-hero-unified{
+  padding:0 !important;
+}
+.guide-unified-v1.wuxia-site-v62 .section-hero-unified .subpage-hero-inner-v62{
+  border:0 !important;
+  box-shadow:none !important;
+  outline:0 !important;
+  background:transparent !important;
+  overflow:visible !important;
+  padding:36px 42px 38px !important;
+}
+.guide-unified-v1.wuxia-site-v62 .section-hero-unified .subpage-hero-inner-v62::before,
+.guide-unified-v1.wuxia-site-v62 .section-hero-unified .subpage-hero-inner-v62::after{
+  content:none !important;display:none !important;
+}
+@media(max-width:600px){
+  .guide-unified-v1.wuxia-site-v62 .section-hero-unified .subpage-hero-inner-v62{
+    padding:27px 23px !important;
+  }
+}
