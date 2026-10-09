@@ -7,14 +7,33 @@
   <title>Меридианы — Руководство 9 Инь</title>
   <link rel="icon" type="image/webp" href="images/favicon.webp">
   <link rel="stylesheet" href="styles.css?v=20261005-1249">
+  <style>
+    /* Meridian-only decorative upgrades */
+    .meridian-atmosphere .paths-hero-v1,
+    .meridian-atmosphere .paths-tab-card-v2,
+    .meridian-atmosphere .paths-section-v1 .path-card-v1 {position:relative;isolation:isolate;transition:border-color .3s ease,box-shadow .3s ease,transform .3s ease}
+    .meridian-atmosphere .paths-hero-v1 {border:1px solid rgba(221,177,90,.43);box-shadow:inset 0 0 0 1px rgba(221,177,90,.07),0 12px 40px rgba(0,0,0,.22);background-image:radial-gradient(ellipse at 85% 20%,rgba(22,116,134,.15),transparent 52%),linear-gradient(145deg,rgba(7,29,35,.96),rgba(2,15,21,.97))}
+    .meridian-atmosphere .paths-hero-v1::after{content:"";position:absolute;inset:8px;border:1px solid rgba(222,182,100,.10);pointer-events:none}
+    .meridian-atmosphere .paths-tab-card-v2 {border-color:rgba(219,175,86,.36)!important;box-shadow:inset 0 0 0 1px rgba(219,175,86,.055),0 9px 24px rgba(0,0,0,.17)}
+    .meridian-atmosphere .paths-tab-card-v2:hover,.meridian-atmosphere .paths-tab-card-v2:focus-visible{border-color:rgba(239,200,117,.75)!important;box-shadow:0 0 25px rgba(213,170,83,.13),inset 0 0 18px rgba(219,175,86,.05);transform:translateY(-3px)}
+    .meridian-atmosphere .paths-section-head-v1{border-bottom:1px solid rgba(222,182,100,.30);position:relative}
+    .meridian-atmosphere .paths-section-head-v1::after{content:"";position:absolute;bottom:-2px;left:0;width:90px;height:3px;background:linear-gradient(90deg,#d6ae62,transparent)}
+    .meridian-atmosphere .paths-section-v1 .path-card-v1{border:1px solid rgba(224,184,102,.36);box-shadow:inset 0 0 0 1px rgba(215,177,93,.06),0 10px 30px rgba(0,0,0,.20);background:radial-gradient(circle at 95% 3%,rgba(31,130,150,.1),transparent 42%),linear-gradient(155deg,#0b252d,#041217)}
+    .meridian-atmosphere .paths-section-v1 .path-card-v1:hover{border-color:rgba(238,201,125,.66);box-shadow:0 0 25px rgba(218,172,80,.10),0 14px 30px rgba(0,0,0,.22)}
+    .meridian-atmosphere #world .path-card-v1>div>img{border:1px solid rgba(227,192,116,.55);box-shadow:0 0 16px rgba(24,139,182,.17)}
+    .meridian-atmosphere #world details summary{padding:7px 0;border-top:1px solid rgba(221,181,95,.18)}
+    .meridian-atmosphere #world details[open] summary{border-bottom:1px solid rgba(221,181,95,.15)}
+    @media(prefers-reduced-motion:reduce){.meridian-atmosphere .paths-tab-card-v2,.meridian-atmosphere .path-card-v1{transition:none!important}}
+  </style>
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script defer src="supabase-config.js"></script>
   <script defer src="auth.js?v=20261005-1101"></script>
 </head>
-<body class="wuxia-site-v5 wuxia-site-v6 wuxia-site-v34 wuxia-site-v39 wuxia-site-v40 wuxia-site-v41 wuxia-site-v42 wuxia-site-v43 wuxia-site-v44 wuxia-site-v45 paths-page-v1">
+<body class="wuxia-site-v5 wuxia-site-v6 wuxia-site-v34 wuxia-site-v39 wuxia-site-v40 wuxia-site-v41 wuxia-site-v42 wuxia-site-v43 wuxia-site-v44 wuxia-site-v45 paths-page-v1 meridian-atmosphere">
   <div class="mist-layer-v26" aria-hidden="true"></div>
   <div class="ash-layer-v26" aria-hidden="true"></div>
   <div class="ember-layer-v26" aria-hidden="true"></div>
+  <div class="leaf-layer-v39" aria-hidden="true"></div>
   <header class="header"><div class="header-inner"><a class="brand" href="index.html" aria-label="Руководство 9 Инь"><span class="round-brand-icon v40-brand-image" aria-hidden="true"><img src="images/brand-scroll-icon.webp" alt=""></span><span class="brand-copy"><strong>Руководство 9 Инь</strong><small>БАЗА ЗНАНИЙ</small></span></a><nav><a href="index.html">Главная</a><a href="taiwan.html">Тайвань</a><a href="pirate.html">Пиратка</a><a href="profile.html" data-account-link>Личный кабинет</a></nav></div></header>
   <main class="paths-shell-v1">
     <section class="paths-hero-v1 reveal"><span class="tag">РАЗВИТИЕ ПЕРСОНАЖА</span><h1>Меридианы</h1><p>Выберите направление меридианов: мировые, школьные или сектанские.</p></section>
@@ -68,6 +87,29 @@
     </section>
   </main>
   <footer class="site-footer-v44"><div class="footer-inner-v44"><span class="footer-title-v46">Руководство 9 Инь 2026</span></div></footer>
+  <script>
+    (() => {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const ash = document.querySelector('.ash-layer-v26');
+      const ember = document.querySelector('.ember-layer-v26');
+      const leaves = document.querySelector('.leaf-layer-v39');
+      const rnd = (min,max) => Math.random()*(max-min)+min;
+      const make = (layer,cls,count,config) => {
+        if (!layer) return;
+        const fragment=document.createDocumentFragment();
+        for(let i=0;i<count;i++){
+          const el=document.createElement('i');
+          el.className=cls;el.style.left=rnd(-2,102)+'%';
+          for(const [name,lo,hi,unit] of config) el.style.setProperty(name,rnd(lo,hi).toFixed(2)+unit);
+          fragment.appendChild(el);
+        }
+        layer.appendChild(fragment);
+      };
+      make(ash,'ash-particle-v26',20,[['--size',2.5,5,'px'],['--drift',-100,100,'px'],['--duration',18,30,'s'],['--delay',-30,0,'s'],['--opacity',.14,.30,'']]);
+      make(ember,'ember-particle-v26',6,[['--size',2,4,'px'],['--drift',-70,70,'px'],['--duration',17,27,'s'],['--delay',-28,0,'s']]);
+      make(leaves,'leaf-particle-v39',7,[['--leaf-size',7,12,'px'],['--leaf-drift',-150,150,'px'],['--leaf-duration',25,40,'s'],['--leaf-delay',-40,0,'s']]);
+    })();
+  </script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const els=document.querySelectorAll('.reveal,.reveal-card');
