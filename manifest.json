@@ -1,0 +1,62 @@
+[
+  {
+    "card_alt": "Блаженые",
+    "original_filename": "Блаженные.png",
+    "target_filename": "meridian-blissful.png",
+    "sha256": "e1365ca9abb7ae2b653afb07e8a5417b88a4cfdc7d97f0b55f11323497a2b1d1"
+  },
+  {
+    "card_alt": "Нищие",
+    "original_filename": "Нищие.png",
+    "target_filename": "meridian-beggars.png",
+    "sha256": "0416648fddacf3964537a82ec7756fec17ccc91ef4537404cbff116ffc01353d"
+  },
+  {
+    "card_alt": "Удан",
+    "original_filename": "Удан.png",
+    "target_filename": "meridian-wudang.png",
+    "sha256": "2ec510ede74e63d73272ddd629399abc2ef804e3dc80efcfd637c13d47b49239"
+  },
+  {
+    "card_alt": "Ученые",
+    "original_filename": "Ученые.png",
+    "target_filename": "meridian-scholars.png",
+    "sha256": "bd65fdb68559baec0869fb5f49fd194df9faf514a39332d30ca8d24783aac018"
+  },
+  {
+    "card_alt": "Тан",
+    "original_filename": "Тан.png",
+    "target_filename": "meridian-tang.png",
+    "sha256": "4f3f66eceea2eaeeda38deae928599143c68ce579d3052731e85143af6dae283"
+  },
+  {
+    "card_alt": "Лейб-Гвардия",
+    "original_filename": "Лейб-Гвардия.png",
+    "target_filename": "meridian-imperial-guard.png",
+    "sha256": "d44364253282706db9b79f4f66ddf4272465575d28b1e6f16418a6c9c7a3486a"
+  },
+  {
+    "card_alt": "Шаолинь",
+    "original_filename": "Шаолинь.png",
+    "target_filename": "meridian-shaolin.png",
+    "sha256": "742757388efa2403f36bc31539d7085e17dc5dbbe1bda4ab7bfa6fcde999663b"
+  },
+  {
+    "card_alt": "Культ Минг",
+    "original_filename": "Минг Культ.png",
+    "target_filename": "meridian-ming-cult.png",
+    "sha256": "3db96d7f9706689e2256cf0925b79e39cf356907c73eeecfb43a32522b81d1b7"
+  },
+  {
+    "card_alt": "Тяньшань",
+    "original_filename": "Тяньшань.png",
+    "target_filename": "meridian-tianshan.png",
+    "sha256": "143e8bb9daaf8e521b2c05dcd07744907b7851c9d095c0b44b924c822fe7c3f1"
+  },
+  {
+    "card_alt": "Святилище Шаманов",
+    "original_filename": "Святилище Шаманов.png",
+    "target_filename": "meridian-shaman-sanctuary.png",
+    "sha256": "a8745c4c634bcb2926ebdf9ce901e2c3de3393efd260677801bebf40a5acae11"
+  }
+]
